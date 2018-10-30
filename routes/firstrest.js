@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/class', (req, res, next) => {
-	let classname = req;
+	let classname = req.query.clsname;
 	console.log(classname);
 	mysql.query('select * from cd_class where cls_name LIKE "%' + classname + '%"',
 		(error, results, fields) => {
