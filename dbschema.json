@@ -4,7 +4,13 @@
       "classDiagram": "xmi",
       "attribute": "cd_attribute",
       "class": "cd_class",
-      "operation": "cd_operation",
+      "method": "cd_operation",
+      "methodParam" : "cd_operparam",
+      "association" : "cd_association",
+      "associationEnd" : "cd_associationend",
+      "dependency" : "cd_dependency",
+      "realization" : "cd_realization",
+      "generalization" : "cd_generalization",
       "repository": "repos"
     },
     "tableContent": {
@@ -30,7 +36,7 @@
         "classID",
         "xmiID"
       ],
-      "methodparam": [
+      "methodParam": [
         "id",
         "methodID",
         "name",
@@ -101,7 +107,7 @@
         "classID": "cls_id",
         "xmiID": "opr_xmi_id"
       },
-      "methodparam": {
+      "methodParam": {
         "id": "id",
         "name": "param_name",
         "methodID": "opr_id",
