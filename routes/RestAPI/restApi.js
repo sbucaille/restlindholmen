@@ -10,14 +10,14 @@ let router = express.Router();
 
 let mysql = require('../mysql/mysqlconnection');
 
-let classDiagramAPI = require('./classdiagram/rest');
+let classDiagramAPI = require('./diagram/rest');
 let repositoryAPI = require('./repository/rest');
 let classAPI = require('./class/rest');
 let attributeAPI = require('./attribute/rest');
 let operationAPI = require('./operation/rest');
 let genericsAPI = require('./generics/rest');
 
-router.use('/classdiagram', classDiagramAPI);
+router.use('/diagram', classDiagramAPI);
 router.use('/repository', repositoryAPI);
 router.use('/class', classAPI);
 router.use('/attribute', attributeAPI);
