@@ -1,0 +1,69 @@
+digraph Automaton {
+rankdir = LR
+0 [label = "Diagram"];
+1 [label = "Class"];
+2 [label = "Attribute"];
+3 [label = "Method"];
+4 [label = "MethodParameter"];
+5 [label = "Association"];
+6 [label = "AssociationEnd"];
+7 [label = "Dependency"];
+8 [label = "Realization"];
+9 [label = "Generalization"];
+
+0 -> 1 [label = "getAllClassesID"]
+0 -> 1 [label = "getClass"]
+0 -> 2 [label = "getAllAttributes"]
+0 -> 2 [label = "getAttribute"]
+0 -> 3 [label = "getAllMethods"]
+0 -> 3 [label = "getMethod"]
+0 -> 4 [label = "getAllMethodParameters"]
+0 -> 4 [label = "getMethodParameter"]
+0 -> 5 [label = "getAllAssociations"]
+0 -> 5 [label = "getAssociation"]
+0 -> 6 [label = "getAllAssociationEnds"]
+0 -> 6 [label = "getAssociationEnd"]
+0 -> 7 [label = "getAllDependencies"]
+0 -> 7 [label = "getDependency"]
+0 -> 8 [label = "getAllRealizations"]
+0 -> 8 [label = "getRealization"]
+0 -> 9 [label = "getAllGeneralizations"]
+0 -> 9 [label = "getGeneralization"]
+
+1 -> 0 [label = "getDiagramID"]
+1 -> 2 [label = "getAllAttributesID"]
+1 -> 2 [label = "getAttribute"]
+1 -> 3 [label = "getAllMethods"]
+1 -> 3 [label = "getMethod"]
+1 -> 4 [label = "getAllMethodParameters"]
+
+2 -> 0 [label = "getDiagram"]
+2 -> 1 [label = "getClass"]
+
+3 -> 0 [label = "getDiagram"]
+3 -> 1 [label = "getClass"]
+
+4 -> 0 [label = "getDiagram"]
+4 -> 1 [label = "getClass"]
+4 -> 3 [label = "getMethod"]
+
+5 -> 0 [label = "getDiagram"]
+5 -> 6 [label = "getAssociationEnds"]
+
+6 -> 0 [label = "getDiagram"]
+6 -> 5 [label = "getAssociation"]
+6 -> 1 [label = "getClass"]
+
+7 -> 0 [label = "getDiagram"]
+7 -> 1 [label = "getSuppliedClass"]
+7 -> 1 [label = "getClientClass"]
+
+8 -> 0 [label = "getDiagram"]
+8 -> 1 [label = "getSuppliedClass"]
+8 -> 1 [label = "getClientClass"]
+
+9 -> 0 [label = "getDiagram"]
+9 -> 1 [label = "getChildClass"]
+9 -> 1 [label = "getParentClass"]
+}
+
