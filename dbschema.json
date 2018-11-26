@@ -1,0 +1,153 @@
+{
+  "db": {
+    "tableNames": {
+      "classDiagram": "xmi",
+      "attribute": "cd_attribute",
+      "class": "cd_class",
+      "operation": "cd_operation",
+      "repository": "repos"
+    },
+    "tableContent": {
+      "class": [
+        "id",
+        "name",
+        "xmiID",
+        "visibility",
+        "classDiagramID"
+      ],
+      "attribute": [
+        "id",
+        "classID",
+        "xmiID",
+        "name",
+        "visibility",
+        "type"
+      ],
+      "method": [
+        "id",
+        "name",
+        "visibility",
+        "classID",
+        "xmiID"
+      ],
+      "methodparam": [
+        "id",
+        "methodID",
+        "name",
+        "visibility"
+      ],
+      "association": [
+        "id",
+        "xmiID",
+        "classDiagramID",
+        "visibility"
+      ],
+      "associationEnd": [
+        "id",
+        "xmiID",
+        "classDiagramID",
+        "associationID",
+        "classID",
+        "name",
+        "isNavigable",
+        "ordering",
+        "aggregation"
+      ],
+      "dependency": [
+        "id",
+        "xmiID",
+        "classDiagramID",
+        "name",
+        "supplierClassID",
+        "clientClassID"
+      ],
+      "realization": [
+        "id",
+        "xmiID",
+        "classDiagramID",
+        "name",
+        "supplierClassID",
+        "clientClassID"
+      ],
+      "generalization": [
+        "id",
+        "xmiID",
+        "classDiagramID",
+        "name",
+        "childClassID",
+        "parentClassID"
+      ]
+    },
+    "contentNames": {
+      "class": {
+        "id": "id",
+        "name": "cls_name",
+        "xmiID": "cls_xmi_id",
+        "visibility": "visibility",
+        "classDiagramID": "xmi_id"
+      },
+      "attribute": {
+        "id": "id",
+        "classID": "cls_id",
+        "xmiID": "attr_xmi_id",
+        "name": "attr_name",
+        "visibility": "visibility",
+        "type": "attr_type"
+      },
+      "method": {
+        "id": "id",
+        "name": "opr_name",
+        "visibility": "opr_visibility",
+        "classID": "cls_id",
+        "xmiID": "opr_xmi_id"
+      },
+      "methodparam": {
+        "id": "id",
+        "name": "param_name",
+        "methodID": "opr_id",
+        "visibility": "visibility"
+      },
+      "association": {
+        "id": "id",
+        "xmiID": "assoc_xmi_id",
+        "classDiagramID": "xmi_id",
+        "visibility": "assoc_visibility"
+      },
+      "associationEnd": {
+        "id": "id",
+        "xmiID": "assocEnd_xmi_id",
+        "classDiagramID": "xmi_id",
+        "classID": "cls_id",
+        "associationID": "assoc_id",
+        "name": "assocEnd_name",
+        "isNavigable": "assocEnd_isNavigable",
+        "ordering": "assocEnd_ordering",
+        "aggregation": "assocEnd_aggragation"
+      },
+      "dependency": {
+        "id": "id",
+        "xmiID": "dep_xmi_id",
+        "classDiagramID": "xmi_id",
+        "name": "dep_name",
+        "supplierClassID": "dep_supplier",
+        "clientClassID": "dep_client"
+      },
+      "realization": {
+        "id": "id",
+        "xmiID": "real_xmi_id",
+        "classDiagramID": "xmi_id",
+        "name": "real_name",
+        "supplierClassID": "real_supplier",
+        "clientClassID": "real_client"
+      },
+      "generalization": {
+        "id": "id",
+        "xmiID": "gen_xmi_id",
+        "classDiagramID": "xmi_id",
+        "name": "gen_name",
+        "childClassID": "gen_child",
+        "parentClassID": "gen_parent"
+      }
+    }
+  }
+}
