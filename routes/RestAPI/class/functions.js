@@ -7,17 +7,10 @@
 
 let knex = require('../../mysql/mysqlconnection').knex;
 let dbshema = require('../../../dbschema').db;
-
-let getArrayFromResult = (results) => {
-	let tabOfIds = [];
-	results.forEach((result)=> {
-		tabOfIds.push(result.id)
-	});
-	return tabOfIds;
-}
+let resultManipulation = require('../../mysql/resultManipulation');
 
 let getListOfClassIDs = async () => {
-	return getArrayFromResult(await knex.select('id').from('cd_class'));
+	return resultManipulation.getArrayFromResult(await knex.select('id').from('cd_class'));
 };
 
 let getListOfAttributeIDs = async (classId) => {
