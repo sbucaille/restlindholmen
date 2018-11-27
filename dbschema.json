@@ -13,7 +13,7 @@
       "generalization" : "cd_generalization",
       "repository": "repos"
     },
-    "tableContent": {
+    "tableListContent": {
       "class": [
         "id",
         "name",
@@ -84,7 +84,7 @@
         "parentClassID"
       ]
     },
-    "contentNames": {
+    "tableContent": {
       "class": {
         "id": "id",
         "name": "cls_name",

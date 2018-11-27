@@ -8,56 +8,56 @@
 let express = require('express');
 let router = express.Router();
 
-let mysql = require('../../mysql/mysqlconnection');
 let diagramRequests = require('./functions');
+let requestHandler = require('../../mysql/requestHandler');
 
 router.get('/allID', async (req, res, next) => {
 	res.send(await diagramRequests.getAllDiagramsID());
 });
 
 router.get('/fromClass', async (req, res, next) => {
-	let classID = req.query.classID;
-	res.send(await diagramRequests.getDiagramIDFromClass(classID));
+	let classID = req.body.classID;
+	res.send(await requestHandler.handleParameter(classID, diagramRequests.getDiagramIDFromClass))
 });
 
 router.get('/fromAttribute', async (req, res, next) => {
-	let attributeID = req.query.attributeID;
-	res.send(await diagramRequests.getDiagramIDFromAttribute(attributeID))
+	let attributeID = req.body.attributeID;
+	res.send(await requestHandler.handleParameter(attributeID, diagramRequests.getDiagramIDFromAttribute))
 });
 
 router.get('/fromMethod', async (req, res, next) => {
-	let methodID = req.query.methodID;
-	res.send(await diagramRequests.getDiagramIDFromMethod(methodID))
+	let methodID = req.body.methodID;
+	res.send(await requestHandler.handleParameter(methodID, diagramRequests.getDiagramIDFromMethod));
 });
 
 router.get('/fromMethodParameter', async (req, res, next) => {
-	let methodParameterID = req.query.methodParameterID;
-	res.send(await diagramRequests.getDiagramIDFromMethodParameter(methodParameterID))
+	let methodParameterID = req.body.methodParameterID;
+	res.send(await requestHandler.handleParameter(methodParameterID, diagramRequests.getDiagramIDFromMethodParameter))
 });
 
 router.get('/fromAssociation', async (req, res, next) => {
-	let associationID = req.query.associationID;
-	res.send(await diagramRequests.getDiagramIDFromAssociation(associationID))
+	let associationID = req.body.associationID;
+	res.send(await requestHandler.handleParameter(associationID, diagramRequests.getDiagramIDFromAssociation))
 });
 
 router.get('/fromAssociationEnd', async (req, res, next) => {
-	let associationEndID = req.query.associationEndID;
-	res.send(await diagramRequests.getDiagramIDFromAssociationEnd(associationEndID));
+	let associationEndID = req.body.associationEndID;
+	res.send(await requestHandler.handleParameter(associationEndID, diagramRequests.getDiagramIDFromAssociationEnd))
 });
 
 router.get('/fromDependency', async (req, res, next) => {
-	let dependencyID = req.query.dependencyID;
-	res.send(await diagramRequests.getDiagramIDFromDependency(dependencyID))
+	let dependencyID = req.body.dependencyID;
+	res.send(await requestHandler.handleParameter(dependencyID, diagramRequests.getDiagramIDFromDependency))
 });
 
 router.get('/fromRealization', async (req, res, next) => {
-	let realizationID = req.query.realizationID;
-	res.send(await diagramRequests.getDiagramIDFromRealization(realizationID))
+	let realizationID = req.body.realizationID;
+	res.send(await requestHandler.handleParameter(realizationID, diagramRequests.getDiagramIDFromRealization))
 });
 
 router.get('/fromGeneralization', async (req, res, next) => {
-	let generalizationID = req.query.generalizationID;
-	res.send(await diagramRequests.getDiagramIDFromGeneralization(generalizationID))
+	let generalizationID = req.body.generalizationID;
+	res.send(await requestHandler.handleParameter(generalizationID, diagramRequests.getDiagramIDFromGeneralization))
 });
 
 module.exports = router;

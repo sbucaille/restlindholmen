@@ -6,114 +6,141 @@
  */
 
 let knex = require('../../mysql/mysqlconnection').knex;
-let dbshema = require('../../../dbschema').db;
+let dbSchema = require('../../../dbschema').db;
+let dbTableNames = dbSchema.tableNames;
+let dbTableContent = dbSchema.tableContent;
 let resultManipulation = require('../../mysql/resultManipulation');
 
 let getAllDiagramsID = async () => {
 	return resultManipulation.getArrayFromResult(
 		await knex
 			.select('id')
-			.from(dbshema.tableNames.classDiagram)
+			.from(dbTableNames.classDiagram)
 	)
 };
 
 let getDiagramIDFromClass = async (classID) => {
 	return await knex
-		.select(dbshema.contentNames.class.classDiagramID)
-		.from(dbshema.tableNames.class)
-		.where(dbshema.contentNames.class.id, '=', classID)
+		.select(
+			dbTableContent.class.id + ' as parameter',
+			dbTableContent.class.classDiagramID
+		)
+		.from(dbTableNames.class)
+		.whereIn(dbTableContent.class.id, classID)
+		.debug()
 };
 
 let getDiagramIDFromAttribute = async (attributeID) => {
 	return await knex
-		.select(dbshema.contentNames.class.classDiagramID)
-		.from(dbshema.tableNames.class)
-		.innerJoin(
-			dbshema.tableNames.attribute,
-			dbshema.tableNames.class + '.' + dbshema.contentNames.class.id,
-			'=',
-			dbshema.tableNames.attribute + '.' + dbshema.contentNames.attribute.classID
+		.select(
+			dbTableNames.attribute + '.' + dbTableContent.attribute.id + ' as parameter',
+			dbTableContent.class.classDiagramID
 		)
-		.where(
-			dbshema.tableNames.attribute + '.' + dbshema.contentNames.attribute.id,
+		.from(dbTableNames.class)
+		.innerJoin(
+			dbTableNames.attribute,
+			dbTableNames.class + '.' + dbTableContent.class.id,
 			'=',
+			dbTableNames.attribute + '.' + dbTableContent.attribute.classID
+		)
+		.whereIn(
+			dbTableNames.attribute + '.' + dbTableContent.attribute.id,
 			attributeID
 		)
 };
 
 let getDiagramIDFromMethod = async (methodID) => {
 	return await knex
-		.select(dbshema.contentNames.class.classDiagramID)
-		.from(dbshema.tableNames.class)
-		.innerJoin(
-			dbshema.tableNames.method,
-			dbshema.tableNames.class + '.' + dbshema.contentNames.class.id,
-			'=',
-			dbshema.tableNames.method + '.' + dbshema.contentNames.method.classID
+		.select(
+			dbTableNames.method + '.' + dbTableContent.method.id + ' as parameter',
+			dbTableContent.class.classDiagramID
 		)
-		.where(
-			dbshema.tableNames.method + '.' + dbshema.contentNames.method.id,
+		.from(dbTableNames.class)
+		.innerJoin(
+			dbTableNames.method,
+			dbTableNames.class + '.' + dbTableContent.class.id,
 			'=',
+			dbTableNames.method + '.' + dbTableContent.method.classID
+		)
+		.whereIn(
+			dbTableNames.method + '.' + dbTableContent.method.id,
 			methodID
 		)
 };
 
 let getDiagramIDFromMethodParameter = async (methodParameterID) => {
 	return await knex
-		.select(dbshema.contentNames.class.classDiagramID)
-		.from(dbshema.tableNames.class)
+		.select(
+			dbTableNames.methodParam + '.' + dbTableContent.methodParam.id + ' as parameter',
+			dbTableContent.class.classDiagramID
+		)
+		.from(dbTableNames.class)
 		.innerJoin(
-			dbshema.tableNames.method,
-			dbshema.tableNames.class + '.' + dbshema.contentNames.class.id,
+			dbTableNames.method,
+			dbTableNames.class + '.' + dbTableContent.class.id,
 			'=',
-			dbshema.tableNames.method + '.' + dbshema.contentNames.method.classID
+			dbTableNames.method + '.' + dbTableContent.method.classID
 		)
 		.innerJoin(
-			dbshema.tableNames.methodParam,
-			dbshema.tableNames.method + '.' + dbshema.contentNames.method.id,
+			dbTableNames.methodParam,
+			dbTableNames.method + '.' + dbTableContent.method.id,
 			'=',
-			dbshema.tableNames.methodParam + '.' + dbshema.contentNames.methodParam.methodID
+			dbTableNames.methodParam + '.' + dbTableContent.methodParam.methodID
 		)
-		.where(
-			dbshema.tableNames.methodParam + '.' + dbshema.contentNames.methodParam.id,
-			'=',
+		.whereIn(
+			dbTableNames.methodParam + '.' + dbTableContent.methodParam.id,
 			methodParameterID
 		)
 };
 
 let getDiagramIDFromAssociation = async (associationID) => {
 	return await knex
-		.select(dbshema.contentNames.association.classDiagramID)
-		.from(dbshema.tableNames.association)
-		.where(dbshema.contentNames.association.id, '=', associationID)
+		.select(
+			dbTableContent.association.id + ' as parameter',
+			dbTableContent.association.classDiagramID
+		)
+		.from(dbTableNames.association)
+		.whereIn(dbTableContent.association.id, associationID)
 };
 
 let getDiagramIDFromAssociationEnd = async (associationEndID) => {
 	return await knex
-		.select(dbshema.contentNames.associationEnd.classDiagramID)
-		.from(dbshema.tableNames.associationEnd)
-		.where(dbshema.contentNames.associationEnd.id, '=', associationEndID)
+		.select(
+			dbTableContent.associationEnd.id + ' as parameter',
+			dbTableContent.associationEnd.classDiagramID
+		)
+		.from(dbTableNames.associationEnd)
+		.whereIn(dbTableContent.associationEnd.id, associationEndID)
 };
 
 let getDiagramIDFromDependency = async (dependencyID) => {
 	return await knex
-		.select(dbshema.contentNames.dependency.classDiagramID)
-		.from(dbshema.tableNames.dependency)
-		.where(dbshema.contentNames.dependency.id, '=', dependencyID)
+		.select(
+			dbTableContent.dependency.id + ' as parameter',
+			dbTableContent.dependency.classDiagramID
+		)
+		.from(dbTableNames.dependency)
+		.whereIn(dbTableContent.dependency.id, dependencyID)
 };
 
 let getDiagramIDFromRealization = async (realizationID) => {
 	return await knex
-		.select(dbshema.contentNames.realization.classDiagramID)
-		.from(dbshema.tableNames.realization)
-		.where(dbshema.contentNames.realization.id, '=', realizationID)
+		.select(
+			dbTableContent.realization.id + ' as parameter',
+			dbTableContent.realization.classDiagramID
+		)
+		.from(dbTableNames.realization)
+		.whereIn(dbTableContent.realization.id, realizationID)
 };
 
 let getDiagramIDFromGeneralization = async (generalizationID) => {
 	return await knex
-		.select(dbshema.contentNames.generalization.classDiagramID)
-		.from(dbshema.tableNames.generalization)
-		.where(dbshema.contentNames.generalization.id, '=', generalizationID)
+		.select(
+			dbTableContent.generalization.id + ' as parameter',
+			dbTableContent.generalization.classDiagramID
+		)
+		.from(dbTableNames.generalization)
+		.whereIn(dbTableContent.generalization.id, generalizationID)
 };
 
 module.exports = {
