@@ -22,11 +22,13 @@ let getAllClassesID = async () => {
 let getClassesFromDiagram = async (diagramID) => {
 	return resultManipulation.getArrayFromResult(
 		await knex
-			.select(dbTableContent.class.id)
+			.select(
+				dbTableContent.diagram.id + ' as parameter',
+				dbTableContent.class.id
+			)
 			.from(dbTableNames.class)
-			.where(
+			.whereIn(
 				dbTableContent.class.classDiagramID,
-				'=',
 				diagramID
 			)
 	)
@@ -34,29 +36,36 @@ let getClassesFromDiagram = async (diagramID) => {
 
 let getClassIDFromAttribute = async (attributeID) => {
 	return await knex
-		.select(dbTableContent.attribute.classID)
+		.select(
+			dbTableContent.attribute.id + ' as parameter',
+			dbTableContent.attribute.classID
+		)
 		.from(dbTableNames.attribute)
-		.where(
+		.whereIn(
 			dbTableContent.attribute.id,
-			'=',
 			attributeID
 		)
 };
 
 let getClassIDFromMethod = async (methodID) => {
 	return await knex
-		.select(dbTableContent.method.classID)
+		.select(
+			dbTableContent.method.id + ' as parameter',
+			dbTableContent.method.classID
+		)
 		.from(dbTableNames.method)
-		.where(
+		.whereIn(
 			dbTableContent.method.id,
-			'=',
 			methodID
 		)
 };
 
 let getClassIDFromMethodParam = async (methodParamID) => {
 	return await knex
-		.select(dbTableContent.method.classID)
+		.select(
+			dbTableNames.methodParam + '.' + dbTableContent.methodParam.id + ' as parameter',
+			dbTableContent.method.classID
+		)
 		.from(dbTableNames.method)
 		.innerJoin(
 			dbTableNames.methodParam,
@@ -64,9 +73,8 @@ let getClassIDFromMethodParam = async (methodParamID) => {
 			'=',
 			dbTableNames.methodParam + '.' + dbTableContent.methodParam.methodID
 		)
-		.where(
+		.whereIn(
 			dbTableNames.methodParam + '.' + dbTableContent.methodParam.id,
-			'=',
 			methodParamID
 		)
 };
@@ -74,7 +82,10 @@ let getClassIDFromMethodParam = async (methodParamID) => {
 let getClassesIDFromAssociation = async (associationID) => {
 	return resultManipulation.getArrayFromResult(
 		await knex
-			.select(dbTableContent.associationEnd.classID)
+			.select(
+				dbTableNames.association + '.' + dbTableContent.association.id + ' as parameter',
+				dbTableContent.associationEnd.classID
+			)
 			.from(dbTableNames.associationEnd)
 			.innerJoin(
 				dbTableNames.association,
@@ -82,121 +93,142 @@ let getClassesIDFromAssociation = async (associationID) => {
 				'=',
 				dbTableNames.association + '.' + dbTableContent.association.id
 			)
-			.where(
+			.whereIn(
 				dbTableNames.association + '.' + dbTableContent.association.id,
-				'=',
 				associationID
 			)
-			.debug()
 	)
 };
 
 let getClassIDFromAssociationEnd = async (associationEndID) => {
 	return await knex
-		.select(dbTableContent.associationEnd.classID)
+		.select(
+			dbTableContent.associationEnd.id + ' as parameter',
+			dbTableContent.associationEnd.classID
+		)
 		.from(dbTableNames.associationEnd)
-		.where(
+		.whereIn(
 			dbTableContent.associationEnd.id,
-			'=',
 			associationEndID
 		)
 };
 
 let getClassesIDFromDependency = async (dependencyID) => {
 	return await knex
-		.select(dbTableContent.dependency.supplierClassID, dbTableContent.dependency.clientClassID)
+		.select(
+			dbTableContent.dependency.id + ' as parameter',
+			dbTableContent.dependency.supplierClassID,
+			dbTableContent.dependency.clientClassID
+		)
 		.from(dbTableNames.dependency)
-		.where(
+		.whereIn(
 			dbTableContent.dependency.id,
-			'=',
 			dependencyID
 		)
 };
 
 let getSupplierClassIDFromDependency = async (dependencyID) => {
 	return await knex
-		.select(dbTableContent.dependency.supplierClassID)
+		.select(
+			dbTableContent.dependency.id + ' as parameter',
+			dbTableContent.dependency.supplierClassID
+		)
 		.from(dbTableNames.dependency)
-		.where(
+		.whereIn(
 			dbTableContent.dependency.id,
-			'=',
 			dependencyID
 		)
 };
 
 let getClientClassIDFromDependency = async (dependencyID) => {
 	return await knex
-		.select(dbTableContent.dependency.clientClassID)
+		.select(
+			dbTableContent.dependency.id + ' as parameter',
+			dbTableContent.dependency.clientClassID
+		)
 		.from(dbTableNames.dependency)
-		.where(
+		.whereIn(
 			dbTableContent.dependency.id,
-			'=',
 			dependencyID
 		)
 };
 
 let getClassesIDFromRealization = async (realizationID) => {
 	return await knex
-		.select(dbTableContent.realization.supplierClassID, dbTableContent.realization.clientClassID)
+		.select(
+			dbTableContent.realization.id + ' as parameter',
+			dbTableContent.realization.supplierClassID,
+			dbTableContent.realization.clientClassID
+		)
 		.from(dbTableNames.realization)
-		.where(
+		.whereIn(
 			dbTableContent.realization.id,
-			'=',
 			realizationID
 		)
 };
 
 let getSupplierClassIDFromRealization = async (realization) => {
 	return await knex
-		.select(dbTableContent.realization.supplierClassID)
+		.select(
+			dbTableContent.realization.id + ' as parameter',
+			dbTableContent.realization.supplierClassID
+		)
 		.from(dbTableNames.realization)
-		.where(
+		.whereIn(
 			dbTableContent.realization.id,
-			'=',
 			realization
 		)
 };
 
 let getClientClassIDFromRealization = async (realizationID) => {
 	return await knex
-		.select(dbTableContent.realization.clientClassID)
+		.select(
+			dbTableContent.realization.id + ' as parameter',
+			dbTableContent.realization.clientClassID
+		)
 		.from(dbTableNames.realization)
-		.where(
+		.whereIn(
 			dbTableContent.realization.id,
-			'=',
 			realizationID
 		)
 };
 
 let getClassesIDFromGeneralization = async (generalizationID) => {
 	return await knex
-		.select(dbTableContent.generalization.childClassID, dbTableContent.generalization.parentClassID)
+		.select(
+			dbTableContent.generalization.id + ' as parameter',
+			dbTableContent.generalization.childClassID,
+			dbTableContent.generalization.parentClassID
+		)
 		.from(dbTableNames.generalization)
-		.where(
+		.whereIn(
 			dbTableContent.generalization.id,
-			'=',
 			generalizationID
 		)
 };
 
 let getChildClassIDFromGeneralization = async (generalizationID) => {
 	return await knex
-		.select(dbTableContent.generalization.childClassID)
+		.select(
+			dbTableContent.generalization.id + ' as parameter',
+			dbTableContent.generalization.childClassID
+		)
 		.from(dbTableNames.generalization)
-		.where(
+		.whereIn(
 			dbTableContent.generalization.id,
-			'=',
 			generalizationID
 		)
 };
 
 let getParentClassIDFromGeneralization = async (generalizationID) => {
 	return await knex
-		.select(dbTableContent.generalization.parentClassID)
+		.select(
+			dbTableContent.generalization.id + ' as parameter',
+			dbTableContent.generalization.parentClassID
+		)
 		.from(dbTableNames.generalization)
-		.where(
+		.whereIn(
 			dbTableContent.generalization.id,
-			'=',
 			generalizationID
 		)
 };
