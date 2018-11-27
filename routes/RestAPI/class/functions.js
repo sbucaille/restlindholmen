@@ -6,24 +6,26 @@
  */
 
 let knex = require('../../mysql/mysqlconnection').knex;
-let dbshema = require('../../../dbschema').db;
+let dbSchema = require('../../../dbschema').db;
+let dbTableNames = dbSchema.tableNames;
+let dbTableContent = dbSchema.tableContent;
 let resultManipulation = require('../../mysql/resultManipulation');
 
 let getAllClassesID = async () => {
 	return resultManipulation.getArrayFromResult(
 		await knex
-			.select(dbshema.contentNames.class.id)
-			.from(dbshema.tableNames.class)
+			.select(dbTableContent.class.id)
+			.from(dbTableNames.class)
 	)
 };
 
 let getClassesFromDiagram = async (diagramID) => {
 	return resultManipulation.getArrayFromResult(
 		await knex
-			.select(dbshema.contentNames.class.id)
-			.from(dbshema.tableNames.class)
+			.select(dbTableContent.class.id)
+			.from(dbTableNames.class)
 			.where(
-				dbshema.contentNames.class.classDiagramID,
+				dbTableContent.class.classDiagramID,
 				'=',
 				diagramID
 			)
@@ -32,10 +34,10 @@ let getClassesFromDiagram = async (diagramID) => {
 
 let getClassIDFromAttribute = async (attributeID) => {
 	return await knex
-		.select(dbshema.contentNames.attribute.classID)
-		.from(dbshema.tableNames.attribute)
+		.select(dbTableContent.attribute.classID)
+		.from(dbTableNames.attribute)
 		.where(
-			dbshema.contentNames.attribute.id,
+			dbTableContent.attribute.id,
 			'=',
 			attributeID
 		)
@@ -43,10 +45,10 @@ let getClassIDFromAttribute = async (attributeID) => {
 
 let getClassIDFromMethod = async (methodID) => {
 	return await knex
-		.select(dbshema.contentNames.method.classID)
-		.from(dbshema.tableNames.method)
+		.select(dbTableContent.method.classID)
+		.from(dbTableNames.method)
 		.where(
-			dbshema.contentNames.method.id,
+			dbTableContent.method.id,
 			'=',
 			methodID
 		)
@@ -54,16 +56,16 @@ let getClassIDFromMethod = async (methodID) => {
 
 let getClassIDFromMethodParam = async (methodParamID) => {
 	return await knex
-		.select(dbshema.contentNames.method.classID)
-		.from(dbshema.tableNames.method)
+		.select(dbTableContent.method.classID)
+		.from(dbTableNames.method)
 		.innerJoin(
-			dbshema.tableNames.methodParam,
-			dbshema.tableNames.method + '.' + dbshema.contentNames.method.id,
+			dbTableNames.methodParam,
+			dbTableNames.method + '.' + dbTableContent.method.id,
 			'=',
-			dbshema.tableNames.methodParam + '.' + dbshema.contentNames.methodParam.methodID
+			dbTableNames.methodParam + '.' + dbTableContent.methodParam.methodID
 		)
 		.where(
-			dbshema.tableNames.methodParam + '.' + dbshema.contentNames.methodParam.id,
+			dbTableNames.methodParam + '.' + dbTableContent.methodParam.id,
 			'=',
 			methodParamID
 		)
@@ -72,16 +74,16 @@ let getClassIDFromMethodParam = async (methodParamID) => {
 let getClassesIDFromAssociation = async (associationID) => {
 	return resultManipulation.getArrayFromResult(
 		await knex
-			.select(dbshema.contentNames.associationEnd.classID)
-			.from(dbshema.tableNames.associationEnd)
+			.select(dbTableContent.associationEnd.classID)
+			.from(dbTableNames.associationEnd)
 			.innerJoin(
-				dbshema.tableNames.association,
-				dbshema.tableNames.associationEnd + '.' + dbshema.contentNames.associationEnd.associationID,
+				dbTableNames.association,
+				dbTableNames.associationEnd + '.' + dbTableContent.associationEnd.associationID,
 				'=',
-				dbshema.tableNames.association + '.' + dbshema.contentNames.association.id
+				dbTableNames.association + '.' + dbTableContent.association.id
 			)
 			.where(
-				dbshema.tableNames.association + '.' + dbshema.contentNames.association.id,
+				dbTableNames.association + '.' + dbTableContent.association.id,
 				'=',
 				associationID
 			)
@@ -91,10 +93,10 @@ let getClassesIDFromAssociation = async (associationID) => {
 
 let getClassIDFromAssociationEnd = async (associationEndID) => {
 	return await knex
-		.select(dbshema.contentNames.associationEnd.classID)
-		.from(dbshema.tableNames.associationEnd)
+		.select(dbTableContent.associationEnd.classID)
+		.from(dbTableNames.associationEnd)
 		.where(
-			dbshema.contentNames.associationEnd.id,
+			dbTableContent.associationEnd.id,
 			'=',
 			associationEndID
 		)
@@ -102,10 +104,10 @@ let getClassIDFromAssociationEnd = async (associationEndID) => {
 
 let getClassesIDFromDependency = async (dependencyID) => {
 	return await knex
-		.select(dbshema.contentNames.dependency.supplierClassID, dbshema.contentNames.dependency.clientClassID)
-		.from(dbshema.tableNames.dependency)
+		.select(dbTableContent.dependency.supplierClassID, dbTableContent.dependency.clientClassID)
+		.from(dbTableNames.dependency)
 		.where(
-			dbshema.contentNames.dependency.id,
+			dbTableContent.dependency.id,
 			'=',
 			dependencyID
 		)
@@ -113,10 +115,10 @@ let getClassesIDFromDependency = async (dependencyID) => {
 
 let getSupplierClassIDFromDependency = async (dependencyID) => {
 	return await knex
-		.select(dbshema.contentNames.dependency.supplierClassID)
-		.from(dbshema.tableNames.dependency)
+		.select(dbTableContent.dependency.supplierClassID)
+		.from(dbTableNames.dependency)
 		.where(
-			dbshema.contentNames.dependency.id,
+			dbTableContent.dependency.id,
 			'=',
 			dependencyID
 		)
@@ -124,10 +126,10 @@ let getSupplierClassIDFromDependency = async (dependencyID) => {
 
 let getClientClassIDFromDependency = async (dependencyID) => {
 	return await knex
-		.select(dbshema.contentNames.dependency.clientClassID)
-		.from(dbshema.tableNames.dependency)
+		.select(dbTableContent.dependency.clientClassID)
+		.from(dbTableNames.dependency)
 		.where(
-			dbshema.contentNames.dependency.id,
+			dbTableContent.dependency.id,
 			'=',
 			dependencyID
 		)
@@ -135,10 +137,10 @@ let getClientClassIDFromDependency = async (dependencyID) => {
 
 let getClassesIDFromRealization = async (realizationID) => {
 	return await knex
-		.select(dbshema.contentNames.realization.supplierClassID, dbshema.contentNames.realization.clientClassID)
-		.from(dbshema.tableNames.realization)
+		.select(dbTableContent.realization.supplierClassID, dbTableContent.realization.clientClassID)
+		.from(dbTableNames.realization)
 		.where(
-			dbshema.contentNames.realization.id,
+			dbTableContent.realization.id,
 			'=',
 			realizationID
 		)
@@ -146,10 +148,10 @@ let getClassesIDFromRealization = async (realizationID) => {
 
 let getSupplierClassIDFromRealization = async (realization) => {
 	return await knex
-		.select(dbshema.contentNames.realization.supplierClassID)
-		.from(dbshema.tableNames.realization)
+		.select(dbTableContent.realization.supplierClassID)
+		.from(dbTableNames.realization)
 		.where(
-			dbshema.contentNames.realization.id,
+			dbTableContent.realization.id,
 			'=',
 			realization
 		)
@@ -157,10 +159,10 @@ let getSupplierClassIDFromRealization = async (realization) => {
 
 let getClientClassIDFromRealization = async (realizationID) => {
 	return await knex
-		.select(dbshema.contentNames.realization.clientClassID)
-		.from(dbshema.tableNames.realization)
+		.select(dbTableContent.realization.clientClassID)
+		.from(dbTableNames.realization)
 		.where(
-			dbshema.contentNames.realization.id,
+			dbTableContent.realization.id,
 			'=',
 			realizationID
 		)
@@ -168,10 +170,10 @@ let getClientClassIDFromRealization = async (realizationID) => {
 
 let getClassesIDFromGeneralization = async (generalizationID) => {
 	return await knex
-		.select(dbshema.contentNames.generalization.childClassID, dbshema.contentNames.generalization.parentClassID)
-		.from(dbshema.tableNames.generalization)
+		.select(dbTableContent.generalization.childClassID, dbTableContent.generalization.parentClassID)
+		.from(dbTableNames.generalization)
 		.where(
-			dbshema.contentNames.generalization.id,
+			dbTableContent.generalization.id,
 			'=',
 			generalizationID
 		)
@@ -179,10 +181,10 @@ let getClassesIDFromGeneralization = async (generalizationID) => {
 
 let getChildClassIDFromGeneralization = async (generalizationID) => {
 	return await knex
-		.select(dbshema.contentNames.generalization.childClassID)
-		.from(dbshema.tableNames.generalization)
+		.select(dbTableContent.generalization.childClassID)
+		.from(dbTableNames.generalization)
 		.where(
-			dbshema.contentNames.generalization.id,
+			dbTableContent.generalization.id,
 			'=',
 			generalizationID
 		)
@@ -190,10 +192,10 @@ let getChildClassIDFromGeneralization = async (generalizationID) => {
 
 let getParentClassIDFromGeneralization = async (generalizationID) => {
 	return await knex
-		.select(dbshema.contentNames.generalization.parentClassID)
-		.from(dbshema.tableNames.generalization)
+		.select(dbTableContent.generalization.parentClassID)
+		.from(dbTableNames.generalization)
 		.where(
-			dbshema.contentNames.generalization.id,
+			dbTableContent.generalization.id,
 			'=',
 			generalizationID
 		)
