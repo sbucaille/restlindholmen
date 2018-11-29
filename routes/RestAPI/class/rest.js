@@ -10,6 +10,7 @@
 let express = require('express');
 let router = express.Router();
 
+let requestHandler = require('../../mysql/requestHandler');
 let classRequests = require('./functions');
 
 router.get('/allID', async (req, res, next) => {
@@ -17,8 +18,14 @@ router.get('/allID', async (req, res, next) => {
 });
 
 router.get('/fromDiagram', async (req, res, next) => {
-	let diagramID = req.body.diagramID;
-	res.send(await classRequests.getClassesFromDiagram(diagramID))
+	let diagramID;
+	if(diagramID = requestHandler.getDataFromQuery(req, "diagramID")){
+		console.log(diagramID);
+		res.send(await classRequests.getClassesFromDiagram(diagramID))
+	}
+	else {
+		res.sendStatus(400);
+	}
 });
 
 router.get('/fromAttribute', async (req, res, next) => {

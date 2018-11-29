@@ -1,0 +1,56 @@
+{
+  "primaryPath": {
+    "pathList": [
+      "testGeneric",
+      "diagram",
+      "class"
+    ]
+  },
+  "secondaryPath": {
+    "testGeneric": {
+      "pathList": [
+        "testPath",
+        "testPath2"
+      ],
+      "testPath": "getTestPath",
+      "testPath2": "getTestPath2"
+    },
+    "diagram": {
+      "pathList": [
+        "allID",
+        "fromClass",
+        "fromAttribute"
+      ],
+      "allID": "getAllDiagramsID",
+      "fromClass": "getDiagramIDFromClass",
+      "fromAttribute": "getDiagramIDFromAttribute"
+    },
+    "class": {
+      "pathList": [
+        "fromDiagram",
+        "fromAttribute"
+      ],
+      "fromDiagram": "getClassesFromDiagram"
+    }
+  },
+  "parameterNames": {
+    "testGeneric" : {
+      "getTestPath": "null",
+      "getTestPath2" : "null"
+    },
+    "diagram" : {
+      "getAllDiagramsID" : "null",
+      "getDiagramIDFromClass": "classID",
+      "getDiagramIDFromAttribute" : "attributeID"
+    },
+    "class": "classID",
+    "attribute": "attributeID",
+    "method": "methodID",
+    "methodParam": "methodParamID",
+    "association": "associationID",
+    "associationEnd": "associationEndID",
+    "dependency": "dependencyID",
+    "realization": "realizationID",
+    "generalization": "generalizationID"
+  }
+}
