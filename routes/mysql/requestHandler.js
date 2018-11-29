@@ -9,11 +9,18 @@ let resultManipulation = require('./resultManipulation');
 
 let handleParameter = async (parameter, requestFunction) => {
 
-	if(!Array.isArray(parameter)) parameter = [parameter];
+	if (!Array.isArray(parameter)) parameter = [parameter];
 	let requestResult = await requestFunction(parameter);
 	return resultManipulation.getResultWithLinkedParameter(requestResult);
 };
 
+let getDataFromQuery = (request, data) => {
+	if (request.body) return request.body[data];
+	else if (request.query) return JSON.parse(request.query)[data];
+	else return null;
+};
+
 module.exports = {
-	handleParameter : handleParameter
+	handleParameter: handleParameter,
+	getDataFromQuery: getDataFromQuery
 };
