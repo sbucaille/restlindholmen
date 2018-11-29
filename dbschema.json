@@ -1,7 +1,7 @@
 {
   "db": {
     "tableNames": {
-      "classDiagram": "xmi",
+      "diagram": "xmi",
       "attribute": "cd_attribute",
       "class": "cd_class",
       "method": "cd_operation",
@@ -14,6 +14,10 @@
       "repository": "repos"
     },
     "tableListContent": {
+      "diagram" : [
+        "id",
+        "filePath"
+      ],
       "class": [
         "id",
         "name",
@@ -85,6 +89,10 @@
       ]
     },
     "tableContent": {
+      "diagram" :{
+        "id" : "ID",
+        "filePath" : "xmi_filePath"
+      },
       "class": {
         "id": "id",
         "name": "cls_name",
