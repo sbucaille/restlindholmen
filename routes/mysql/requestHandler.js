@@ -15,11 +15,15 @@ let handleParameter = async (parameter, requestFunction) => {
 };
 
 let getDataFromQuery = (request, data) => {
-	if (request.body) return request.body[data];
-	else if (request.query) return JSON.parse(request.query)[data];
-	else return null;
+	if (request.body) return requestDataToArray(request.body[data]);
+	else if (request.query) return requestDataToArray(JSON.parse(request.query)[data]);
+	else throw data + " parameter could not be found.";
 };
 
+let requestDataToArray = (data) => {
+	if(!Array.isArray(data)) return [data];
+	else return data;
+}
 module.exports = {
 	handleParameter: handleParameter,
 	getDataFromQuery: getDataFromQuery

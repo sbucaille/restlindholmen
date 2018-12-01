@@ -9,6 +9,22 @@ let knex = require('../../mysql/mysqlconnection').knex;
 let dbshema = require('../../mysql/mysqlconnection').dbshema;
 let checkFunctions = require('./check');
 
+let getTestPath = async () => {
+	return "getTestPath succeeded";
+};
+
+let getTestPath2 = async (testID) => {
+	return "getTestPath2 with testID : " + testID
+};
+
+let getTestAntoine = async (antoineID) => {
+	return "Bonjour Antoine";
+};
+
+let getTestAlexis = async (alexisID) => {
+	return "Bonjour Alexis le " + alexisID
+}
+
 let getListOfIds = async (table) => {
 
 	let results = await knex.select('id').from(tableName);
@@ -32,5 +48,9 @@ let getListOfElementFromClass = async (table, id) => {
 module.exports = {
 	getListOfIds: getListOfIds,
 	getElementInfoFromID: getElementInfoFromID,
-	getListOfElementFromClass: getListOfElementFromClass
+	getListOfElementFromClass: getListOfElementFromClass,
+	getTestPath: getTestPath,
+	getTestPath2: getTestPath2,
+	getTestAntoine: getTestAntoine,
+	getTestAlexis: getTestAlexis
 }

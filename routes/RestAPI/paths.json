@@ -3,54 +3,134 @@
     "pathList": [
       "testGeneric",
       "diagram",
-      "class"
+      "class",
+      "attribute",
+      "method",
+      "methodParam",
+      "association",
+      "associationEnd",
+      "dependency",
+      "realization",
+      "generalization"
     ]
   },
   "secondaryPath": {
     "testGeneric": {
       "pathList": [
         "testPath",
-        "testPath2"
+        "testPath2",
+        "testAntoine",
+        "testAlexis"
       ],
       "testPath": "getTestPath",
-      "testPath2": "getTestPath2"
+      "testPath2": "getTestPath2",
+      "testAntoine": "getTestAntoine",
+      "testAlexis": "getTestAlexis"
     },
     "diagram": {
       "pathList": [
         "allID",
         "fromClass",
-        "fromAttribute"
+        "fromAttribute",
+        "fromMethod",
+        "fromMethodParameter",
+        "fromAssociation",
+        "fromAssociationEnd",
+        "fromDependency",
+        "fromRealization",
+        "fromGeneralization"
       ],
       "allID": "getAllDiagramsID",
       "fromClass": "getDiagramIDFromClass",
-      "fromAttribute": "getDiagramIDFromAttribute"
+      "fromAttribute": "getDiagramIDFromAttribute",
+      "fromMethod": "getDiagramIDFromMethod",
+      "fromMethodParameter": "getDiagramIDFromMethodParameter",
+      "fromAssociation": "getDiagramIDFromAssociation",
+      "fromAssociationEnd": "getDiagramIDFromAssociationEnd",
+      "fromDependency": "getDiagramIDFromDependency",
+      "fromRealization": "getDiagramIDFromRealization",
+      "fromGeneralization": "getDiagramIDFromGeneralization"
     },
     "class": {
       "pathList": [
+        "info",
+        "allID",
         "fromDiagram",
-        "fromAttribute"
+        "fromAttribute",
+        "fromMethod",
+        "fromMethodParam",
+        "fromAssociation",
+        "fromAssociationEnd",
+        "fromDependency",
+        "fromRealization",
+        "fromGeneralization"
       ],
-      "fromDiagram": "getClassesFromDiagram"
-    }
+      "info" :  "getClassInfo",
+      "allID": "getAllClassesID",
+      "fromDiagram": "getClassesFromDiagram",
+      "fromAttribute": "getClassIDFromAttribute",
+      "fromMethod": "getClassIDFromMethod",
+      "fromMethodParam": "getClassIDFromMethodParam",
+      "fromAssociation": "getClassesIDFromAssociation",
+      "fromAssociationEnd": "getClassIDFromAssociationEnd",
+      "fromDependency": "getClassesIDFromDependency",
+      "fromRealization": "getClassesIDFromRealization",
+      "fromGeneralization": "getClassesIDFromGeneralization"
+    },
+    "method": {
+      "pathList": [
+        "fromClass"
+      ],
+      "fromClass": "testImportMethod"
+    },
+    "methodParam": {},
+    "association": {},
+    "associationEnd": {},
+    "dependency": {},
+    "realization": {},
+    "generalization": {}
   },
   "parameterNames": {
-    "testGeneric" : {
+    "testGeneric": {
       "getTestPath": "null",
-      "getTestPath2" : "null"
+      "getTestPath2": "testID",
+      "getTestAntoine": "antoineID",
+      "getTestAlexis": "alexisID"
     },
-    "diagram" : {
-      "getAllDiagramsID" : "null",
+    "diagram": {
+      "getAllDiagramsID": "null",
       "getDiagramIDFromClass": "classID",
-      "getDiagramIDFromAttribute" : "attributeID"
+      "getDiagramIDFromAttribute": "attributeID",
+      "getDiagramIDFromMethod": "methodID",
+      "getDiagramIDFromMethodParameter": "methodParameterID",
+      "getDiagramIDFromAssociation": "associationID",
+      "getDiagramIDFromAssociationEnd": "associationEndID",
+      "getDiagramIDFromDependency": "dependencyID",
+      "getDiagramIDFromRealization": "realizationID",
+      "getDiagramIDFromGeneralization": "generalizationID"
     },
-    "class": "classID",
-    "attribute": "attributeID",
-    "method": "methodID",
-    "methodParam": "methodParamID",
-    "association": "associationID",
-    "associationEnd": "associationEndID",
-    "dependency": "dependencyID",
-    "realization": "realizationID",
-    "generalization": "generalizationID"
+    "class": {
+      "getClassInfo" : "classID",
+      "getAllClassesID": "null",
+      "getClassesFromDiagram": "diagramID",
+      "getClassIDFromAttribute": "attributeID",
+      "getClassIDFromMethod": "methodID",
+      "getClassIDFromMethodParam": "methodParamID",
+      "getClassesIDFromAssociation": "associationID",
+      "getClassIDFromAssociationEnd": "associationEndID",
+      "getClassesIDFromDependency": "dependencyID",
+      "getClassesIDFromRealization": "realizationID",
+      "getClassesIDFromGeneralization": "generalizationID"
+    },
+    "attribute": {},
+    "method": {
+      "testImportMethod": "methodID"
+    },
+    "methodParam": {},
+    "association": {},
+    "associationEnd": {},
+    "dependency": {},
+    "realization": {},
+    "generalization": {}
   }
 }
