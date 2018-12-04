@@ -24,7 +24,6 @@ router.post('/:primaryPath/:secondaryPath', async (req, res, next) => {
 	let secondaryPath = req.params.secondaryPath;
 	let pathData = checkFunctions.checkPathExistence(primaryPath, secondaryPath);
 	let parameterData = requestHandler.getDataFromQuery(req, pathData.dataName);
-	console.log(pathData);
 	try {
 		let results;
 		if (parameterData) {

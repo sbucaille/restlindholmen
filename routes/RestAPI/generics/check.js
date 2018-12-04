@@ -15,9 +15,6 @@ let checkTableExistence = (table) => {
 };
 
 let checkPathExistence = (primaryPath, secondaryPath) => {
-	console.log(primaryPath);
-	console.log(secondaryPath);
-	console.log(paths.primaryPath.pathList);
 	if (paths.primaryPath.pathList.includes(primaryPath)) {
 		if (paths.secondaryPath[primaryPath].pathList.includes(secondaryPath)) {
 			let dataName;

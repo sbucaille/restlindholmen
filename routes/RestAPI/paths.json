@@ -27,9 +27,20 @@
       "testAntoine": "getTestAntoine",
       "testAlexis": "getTestAlexis"
     },
+    "attribute": {
+      "pathList": [
+        "allID",
+        "info",
+        "fromClass"
+      ],
+      "allID": "getAllAttributesID",
+      "info": "getAttributeInfo",
+      "fromClass": "getAttributesFromClass"
+    },
     "diagram": {
       "pathList": [
         "allID",
+        "info",
         "fromClass",
         "fromAttribute",
         "fromMethod",
@@ -41,6 +52,7 @@
         "fromGeneralization"
       ],
       "allID": "getAllDiagramsID",
+      "info": "getDiagramInfo",
       "fromClass": "getDiagramIDFromClass",
       "fromAttribute": "getDiagramIDFromAttribute",
       "fromMethod": "getDiagramIDFromMethod",
@@ -53,8 +65,8 @@
     },
     "class": {
       "pathList": [
-        "info",
         "allID",
+        "info",
         "fromDiagram",
         "fromAttribute",
         "fromMethod",
@@ -65,7 +77,7 @@
         "fromRealization",
         "fromGeneralization"
       ],
-      "info" :  "getClassInfo",
+      "info": "getClassInfo",
       "allID": "getAllClassesID",
       "fromDiagram": "getClassesFromDiagram",
       "fromAttribute": "getClassIDFromAttribute",
@@ -79,11 +91,26 @@
     },
     "method": {
       "pathList": [
-        "fromClass"
+        "allID",
+        "info",
+        "fromClass",
+        "fromMethodParam"
       ],
-      "fromClass": "testImportMethod"
+      "allID": "getAllMethodsID",
+      "info": "getMethodInfo",
+      "fromClass": "getMethodsFromClass",
+      "fromMethodParam": "getMethodsFromMethodParam"
     },
-    "methodParam": {},
+    "methodParam": {
+      "pathList": [
+        "allID",
+        "info",
+        "fromMethod"
+      ],
+      "allID": "getAllMethodParamsID",
+      "info": "getMethodParamInfo",
+      "fromMethod": "getMethodParamsFromMethod"
+    },
     "association": {},
     "associationEnd": {},
     "dependency": {},
@@ -99,6 +126,7 @@
     },
     "diagram": {
       "getAllDiagramsID": "null",
+      "getDiagramInfo": "diagramID",
       "getDiagramIDFromClass": "classID",
       "getDiagramIDFromAttribute": "attributeID",
       "getDiagramIDFromMethod": "methodID",
@@ -110,7 +138,7 @@
       "getDiagramIDFromGeneralization": "generalizationID"
     },
     "class": {
-      "getClassInfo" : "classID",
+      "getClassInfo": "classID",
       "getAllClassesID": "null",
       "getClassesFromDiagram": "diagramID",
       "getClassIDFromAttribute": "attributeID",
@@ -122,11 +150,22 @@
       "getClassesIDFromRealization": "realizationID",
       "getClassesIDFromGeneralization": "generalizationID"
     },
-    "attribute": {},
-    "method": {
-      "testImportMethod": "methodID"
+    "attribute": {
+      "getAllAttributesID": "null",
+      "getAttributeInfo": "attributeID",
+      "getAttributesFromClass": "classID"
     },
-    "methodParam": {},
+    "method": {
+      "getAllMethodsID": "null",
+      "getMethodInfo": "methodID",
+      "getMethodsFromClass": "classID",
+      "getMethodsFromMethodParam": "methodParamID"
+    },
+    "methodParam": {
+      "getAllMethodParamsID": "null",
+      "getMethodParamInfo": "methodParamID",
+      "getMethodParamsFromMethod": "methodID"
+    },
     "association": {},
     "associationEnd": {},
     "dependency": {},

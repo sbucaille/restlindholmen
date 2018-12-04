@@ -19,6 +19,21 @@ let getAllDiagramsID = async () => {
 	)
 };
 
+/**
+ * EntityInfo typed query.
+ * @param diagramID
+ * @returns {Promise<void>}
+ */
+let getDiagramInfo = async (diagramID) => {
+	return await knex
+		.select()
+		.from(dbTableNames.diagram)
+		.whereIn(
+			dbTableContent.diagram.id,
+			diagramID
+		)
+};
+
 let getDiagramIDFromClass = async (classID) => {
 	return await knex
 		.select(
@@ -27,7 +42,6 @@ let getDiagramIDFromClass = async (classID) => {
 		)
 		.from(dbTableNames.class)
 		.whereIn(dbTableContent.class.id, classID)
-		.debug()
 };
 
 let getDiagramIDFromAttribute = async (attributeID) => {
@@ -145,6 +159,7 @@ let getDiagramIDFromGeneralization = async (generalizationID) => {
 
 module.exports = {
 	getAllDiagramsID: getAllDiagramsID,
+	getDiagramInfo: getDiagramInfo,
 	getDiagramIDFromClass: getDiagramIDFromClass,
 	getDiagramIDFromAttribute: getDiagramIDFromAttribute,
 	getDiagramIDFromMethod: getDiagramIDFromMethod,

@@ -1,6 +1,6 @@
 /*
  * Developed by Steven BUCAILLE on 11/26/18 6:58 PM.
- * Last modified 11/26/18 11:33 AM.
+ * Last modified 11/19/18 10:26 PM.
  * Copyright (c) 2018. All right reserved.
  *
  */
@@ -15,51 +15,51 @@ let resultManipulation = require('../../mysql/resultManipulation');
  * Array typed query.
  * @returns {Promise<Array>}
  */
-let getAllAttributesID = async () => {
+let getAllMethodParamsID = async () => {
 	return resultManipulation.getArrayFromResult(
 		await knex
-			.select(dbTableContent.attribute.id)
-			.from(dbTableNames.attribute)
+			.select(dbTableContent.methodParam.id)
+			.from(dbTableNames.methodParam)
 	)
 };
 
 /**
  * EntityInfo typed query.
- * @param attributeID
+ * @param methodParamID
  * @returns {Promise<void>}
  */
-let getAttributeInfo = async (attributeID) => {
+let getMethodParamInfo = async (methodParamID) => {
 	return await knex
 		.select()
-		.from(dbTableNames.attribute)
+		.from(dbTableNames.methodParam)
 		.whereIn(
-			dbTableContent.attribute,
-			attributeID
+			dbTableContent.methodParam.id,
+			methodParamID
 		)
 };
 
 /**
  * ParameterLinked typed query.
- * @param classID
+ * @param methodID
  * @returns {Promise<{}>}
  */
-let getAttributesFromClass = async (classID) => {
+let getMethodParamsFromMethod = async (methodID) => {
 	return resultManipulation.getResultWithLinkedParameter(
 		await knex
 			.select(
-				dbTableContent.attribute.classID + ' as parameter',
-				dbTableContent.attribute.id
+				dbTableContent.methodParam.methodID + ' as parameter',
+				dbTableContent.methodParam.id
 			)
-			.from(dbTableNames.attribute)
+			.from(dbTableNames.methodParam)
 			.whereIn(
-				dbTableContent.attribute.classID,
-				classID
+				dbTableContent.methodParam.methodID,
+				methodID
 			)
 	)
 };
 
 module.exports = {
-	getAllAttributesID: getAllAttributesID,
-	getAttributeInfo: getAttributeInfo,
-	getAttributesFromClass: getAttributesFromClass
+	getAllMethodParamsID: getAllMethodParamsID,
+	getMethodParamInfo: getMethodParamInfo,
+	getMethodParamsFromMethod: getMethodParamsFromMethod
 };
