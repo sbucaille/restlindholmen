@@ -98,7 +98,7 @@
         "name": "cls_name",
         "xmiID": "cls_xmi_id",
         "visibility": "visibility",
-        "classDiagramID": "xmi_id"
+        "classID": "xmi_id"
       },
       "attribute": {
         "id": "id",
