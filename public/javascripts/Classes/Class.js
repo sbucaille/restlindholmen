@@ -14,6 +14,12 @@ class Class {
 		this._visibility = visibility;
 		this._areAttributesLoaded = false;
 		this._areMethodsLoaded = false;
+		this.loadInfos();
 	}
 
+	async loadInfos() {
+		let infos = await ApiWrapper.getClass(this._id);
+		console.log(infos);
+		console.log(infos[0][dbschema.db.tableContent.class.id]);
+	}
 }
