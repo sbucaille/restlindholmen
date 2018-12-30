@@ -5,8 +5,6 @@
  *
  */
 
-// TODO Envisager la possibilité de demander plusieurs groupes de classes en fonction de plusieurs diagrammes ou plusieurs attributs par exemple.
-
 let express = require('express');
 let router = express.Router();
 
@@ -17,10 +15,9 @@ router.get('/allID', async (req, res, next) => {
 	res.send(await classRequests.getAllClassesID())
 });
 
-router.get('/fromDiagram', async (req, res, next) => {
+router.post('/fromDiagram', async (req, res, next) => {
 	let diagramID;
 	if(diagramID = requestHandler.getDataFromQuery(req, "diagramID")){
-		console.log(diagramID);
 		res.send(await classRequests.getClassesFromDiagram(diagramID))
 	}
 	else {

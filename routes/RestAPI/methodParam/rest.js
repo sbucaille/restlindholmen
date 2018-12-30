@@ -11,9 +11,4 @@ let router = express.Router();
 let mysql = require('../../mysql/mysqlconnection');
 let classDiagramsRequests = require('./functions');
 
-router.get('/idlist', async (req, res, next) => {
-	let listOfId = await classDiagramsRequests.getListOfClassIds();
-	res.send(listOfId);
-});
-
 module.exports = router;

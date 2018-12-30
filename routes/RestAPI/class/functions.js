@@ -36,7 +36,7 @@ let getClassInfo = async (classID) => {
 			dbTableContent.class.id,
 			classID
 		)
-}
+};
 
 /**
  * ParameterLinked typed query.
@@ -47,12 +47,12 @@ let getClassesFromDiagram = async (diagramID) => {
 	return resultManipulation.getResultWithLinkedParameter(
 		await knex
 			.select(
-				dbTableContent.class.classID + ' as parameter',
+				dbTableContent.class.diagramID + ' as parameter',
 				dbTableContent.class.id
 			)
 			.from(dbTableNames.class)
 			.whereIn(
-				dbTableContent.class.classID,
+				dbTableContent.class.diagramID,
 				diagramID
 			));
 };

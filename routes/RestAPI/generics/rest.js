@@ -14,7 +14,12 @@ let requestFunctions = {
 	diagram : require('../diagram/functions'),
 	class : require('../class/functions'),
 	attribute : require('../attribute/functions'),
-	method : require('../method/functions')
+	method : require('../method/functions'),
+	association : require('../association/functions'),
+	associationEnd : require('../associationEnd/functions'),
+	dependency : require('../dependency/functions'),
+	realization : require('../realization/functions'),
+	generalization : require('../generalization/functions')
 };
 let requestHandler = require('../../mysql/requestHandler');
 let checkFunctions = require('./check');

@@ -90,7 +90,7 @@
     },
     "tableContent": {
       "diagram" :{
-        "id" : "ID",
+        "id" : "id",
         "filePath" : "xmi_filePath"
       },
       "class": {
@@ -98,7 +98,7 @@
         "name": "cls_name",
         "xmiID": "cls_xmi_id",
         "visibility": "visibility",
-        "classID": "xmi_id"
+        "diagramID": "xmi_id"
       },
       "attribute": {
         "id": "id",

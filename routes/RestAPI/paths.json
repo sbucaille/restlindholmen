@@ -111,11 +111,71 @@
       "info": "getMethodParamInfo",
       "fromMethod": "getMethodParamsFromMethod"
     },
-    "association": {},
-    "associationEnd": {},
-    "dependency": {},
-    "realization": {},
-    "generalization": {}
+    "association": {
+      "pathList" : [
+        "allID",
+        "info",
+        "fromDiagram"
+      ],
+      "allID" : "getAllAssociationsID",
+      "info" : "getAssociationInfo",
+      "fromDiagram" : "getAssociationsFromDiagram"
+    },
+    "associationEnd": {
+      "pathList" : [
+        "allID",
+        "info",
+        "fromDiagram",
+        "fromAssociation",
+        "fromClass"
+      ],
+      "allID" : "getAllAssociationEndsID",
+      "info" : "getAssociationEndInfo",
+      "fromDiagram" : "getAssociationEndsFromDiagram",
+      "fromAssociation" : "getAssociationEndsFromAssociation"
+    },
+    "dependency": {
+      "pathList" : [
+        "allID",
+        "info",
+        "fromDiagram",
+        "fromSupplierClass",
+        "fromClientClass"
+      ],
+      "allID" : "getAllDependenciesID",
+      "info": "getDependencyInfo",
+      "fromDiagram" : "getDependenciesFromDiagram",
+      "fromSupplierClass" : "getDependenciesFromSupplierClass",
+      "fromClientClass" : "getDependenciesFromClientClass"
+    },
+    "realization": {
+      "pathList" : [
+        "allID",
+        "info",
+        "fromDiagram",
+        "fromSupplierClass",
+        "fromClientClass"
+      ],
+      "allID" : "getAllRealizationsID",
+      "info": "getRealizationInfo",
+      "fromDiagram" : "getRealizationsIDFromDiagram",
+      "fromSupplierClass" : "getRealizationsFromSupplierClass",
+      "fromClientClass" : "getRealizationsFromClientClass"
+    },
+    "generalization": {
+      "pathList" : [
+        "allID",
+        "info",
+        "fromDiagram",
+        "fromChildClass",
+        "fromParentClass"
+      ],
+      "allID" : "getAllGeneralizationsID",
+      "info" : "getGeneralizationInfo",
+      "fromDiagram" : "getGeneralizationsFromDiagram",
+      "fromChildClass" : "getGeneralizationsFromChildClass",
+      "fromParentClass" : "getGeneralizationsFromParentClass"
+    }
   },
   "parameterNames": {
     "testGeneric": {
@@ -166,10 +226,38 @@
       "getMethodParamInfo": "methodParamID",
       "getMethodParamsFromMethod": "methodID"
     },
-    "association": {},
-    "associationEnd": {},
-    "dependency": {},
-    "realization": {},
-    "generalization": {}
+    "association": {
+      "getAllAssociationsID" : "null",
+      "getAssociationInfo" : "associationID",
+      "getAssociationsFromDiagram" : "diagramID"
+    },
+    "associationEnd": {
+      "getAllAssociationEndsID" : "null",
+      "getAssociationEndInfo" : "associationEndID",
+      "getAssociationEndsFromDiagram" : "diagramID",
+      "getAssociationEndsFromClass" : "classID",
+      "getAssociationEndsFromAssociation" : "associationID"
+    },
+    "dependency": {
+      "getAllDependenciesID" : "null",
+      "getDependencyInfo" : "dependencyID",
+      "getDependenciesFromDiagram" : "diagramID",
+      "getDependenciesFromSupplierClass" : "classID",
+      "getDependenciesFromClientClass" : "classID"
+    },
+    "realization": {
+      "getAllRealizationsID" : "null",
+      "getRealizationInfo" : "realizationID",
+      "getRealizationsIDFromDiagram" : "diagramID",
+      "getRealizationsFromSupplierClass" : "classID",
+      "getRealizationsFromClientClass" : "classID"
+    },
+    "generalization": {
+      "getAllGeneralizationsID" : "null",
+      "getGeneralizationInfo" : "generalizationID",
+      "getGeneralizationsFromDiagram" : "diagramID",
+      "getGeneralizationsFromChildClass" : "classID",
+      "getGeneralizationsFromParentClass" : "classID"
+    }
   }
 }

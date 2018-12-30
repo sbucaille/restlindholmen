@@ -24,10 +24,14 @@ router.use('/attribute', attributeAPI);
 router.use('/method', operationAPI);
 router.use('/generics', genericsAPI);
 
+router.get('/getDBSchemaJSON', (req, res, next) => {
+	res.send(require('./../../dbschema'));
+})
+
 router.post('/testPost', (req, res, next) => {
 	console.log(req.body);
 	res.sendStatus(200);
-})
+});
 
 router.get('/testKnex', (req, res, next) => {
 	let classname = req.query.clsname;

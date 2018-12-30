@@ -5,7 +5,7 @@
  *
  */
 
-let mysql = require('mysql');
+let knex = require('knex');
 let auth = require('../../auth').mysql;
 let dbshema = require('../../dbschema').db;
 
@@ -19,22 +19,20 @@ let db = require('knex')({
 	}
 });
 
-let connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : auth.user,
-	password : auth.password,
-	database : auth.dbname
-});
+let test = async () => {
+	let select1 = db.select().from(dbshema.tableNames.diagram);
+	for (let i = 0; i < 5; i++) {
+		select1 = select1.orWhere(dbshema.tableContent.diagram.id, '=', i);
+	}
 
-connection.connect();
+	console.log(select1.toString());
+	let result = await select1;
+	console.log(result);
+}
 
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-	if (error) throw error;
-	console.log('The solution is: ', results[0].solution);
-});
+test();
 
 module.exports = {
-	"connection" : connection,
 	"knex" : db,
 	"dbshema" : dbshema
 };
