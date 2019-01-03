@@ -44,6 +44,26 @@ let getCommitInfo = async (commitID) => {
  * @param diagramID
  * @returns {Promise<{}>}
  */
+let getCommitFromUmlFile = async (umlFileID) => {
+    return resultManipulation.getResultWithLinkedParameter(
+        await knex
+            .select(
+                dbTableContent.umlfile.id + ' as parameter',
+                dbTableContent.umlfile.commitID
+            )
+            .from(dbTableNames.umlfile)
+            .whereIn(
+                dbTableContent.umlfile.id,
+                umlFileID
+            )
+    )
+}
+
+/**
+ * ParameterLinked typed query.
+ * @param diagramID
+ * @returns {Promise<{}>}
+ */
 let getCommitFromDiagram = async (diagramID) => {
     return resultManipulation.getResultWithLinkedParameter(
         await knex
@@ -128,6 +148,7 @@ let getCommitFromFileCommit = async (fileCommitID) => {
 module.exports = {
     getAllCommitsID : getAllCommitsID,
     getCommitInfo : getCommitInfo,
+    getCommitFromUmlFile : getCommitFromUmlFile,
     getCommitFromDiagram : getCommitFromDiagram,
     getCommitFromRepository : getCommitFromRepository,
     getCommitFromPeople : getCommitFromPeople,

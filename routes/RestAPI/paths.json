@@ -208,6 +208,7 @@
       ],
       "allID": "getAllCommitsID",
       "info": "getCommitInfo",
+      "fromUmlFile" : "getCommitFromUmlFile",
       "fromDiagram": "getCommitFromDiagram",
       "fromRepository": "getCommitFromRepository",
       "fromPeople": "getCommitFromPeople",
@@ -356,6 +357,7 @@
     "commit": {
       "getAllCommitsID": "null",
       "getCommitInfo": "commitID",
+      "getCommitFromUmlFile" : "umlFileID",
       "getCommitFromDiagram": "diagramID",
       "getCommitFromRepository": "repositoryID",
       "getCommitFromPeople": "peopleID",
