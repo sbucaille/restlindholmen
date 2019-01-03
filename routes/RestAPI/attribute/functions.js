@@ -33,7 +33,7 @@ let getAttributeInfo = async (attributeID) => {
 		.select()
 		.from(dbTableNames.attribute)
 		.whereIn(
-			dbTableContent.attribute,
+			dbTableContent.attribute.id,
 			attributeID
 		)
 };
