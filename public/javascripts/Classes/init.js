@@ -6,7 +6,6 @@
  */
 
 console.log("init");
-
 let dbschema;
 
 async function httpGet(url, argument) {
