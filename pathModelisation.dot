@@ -1,83 +1,82 @@
-digraph Automaton {
-rankdir = LR
-0 [label = "Diagram"];
-1 [label = "Class"];
-2 [label = "Attribute"];
-3 [label = "Method"];
-4 [label = "MethodParameter"];
-5 [label = "Association"];
-6 [label = "AssociationEnd"];
-7 [label = "Dependency"];
-8 [label = "Realization"];
-9 [label = "Generalization"];
+digraph GenericPaths {
 
-0 -> 0 [label = "getAllDiagramsID" color="blue"]
-0 -> 0 [label = "getDiagramInfo" color="blue"]
-1 -> 0 [label = "getDiagramID" color="blue"]
-2 -> 0 [label = "getDiagramID" color="blue"]
-3 -> 0 [label = "getDiagramID" color="blue"]
-4 -> 0 [label = "getDiagramID" color="blue"]
-5 -> 0 [label = "getDiagramID" color="blue"]
-6 -> 0 [label = "getDiagramID" color="blue"]
-7 -> 0 [label = "getDiagramID" color="blue"]
-8 -> 0 [label = "getDiagramID" color="blue"]
-9 -> 0 [label = "getDiagramID" color="blue"]
+    0 -> 10 [color = "grey"]
+    0 -> 11 [color = "grey"]
 
-1 -> 1 [label = "getAllClassesID" color="blue"]
-1 -> 1 [label = "getClassInfo" color="blue"]
-0 -> 1 [label = "getClasses" color="blue"]
-2 -> 1 [label = "getClassID" color="blue"]
-3 -> 1 [label = "getClassID" color="blue"]
-4 -> 1 [label = "getClassID" color="blue"]
-5 -> 1 [label = "getClassesID" color="blue"] //Get the two classes associated
-6 -> 1 [label = "getClassID" color="blue"]
-7 -> 1 [label = "getClassesID" color="blue"]
-7 -> 1 [label = "getSupplierClassID" color="blue"]
-7 -> 1 [label = "getClientClassID" color="blue"]
-8 -> 1 [label = "getClassesID" color="blue"]
-8 -> 1 [label = "getSupplierClassID" color="blue"]
-8 -> 1 [label = "getClientClassID" color="blue"]
-9 -> 1 [label = "getClassesID" color="blue"]
-9 -> 1 [label = "getChildClassID" color="blue"]
-9 -> 1 [label = "getParentClassID" color="blue"]
+    subgraph UMLProjectMetaData {
 
-2 -> 2 [label = "getAllAttributesID" color="blue"]
-2 -> 2 [label = "getAttributeInfo" color="blue"]
-1 -> 2 [label = "getAttributes" color="blue"]
+    rankdir = LR
+    style = filled;
+    color = blue;
+    node [style = filled,color = white];
+    label = "UML Project Meta Data";
 
-1 -> 3 [label = "getAllMethods" color="blue"]
-4 -> 3 [label = "getMethod" color="blue"]
+    10 [label = "UML Files"];
+    11 [label = "Commit"];
+    12 [label = "Repository"];
+    13 [label = "File Commit"];
+    14 [label = "People"];
+    15 [label = "User"];
 
-4 -> 4 [label = "getAllMethodParamsID" color="blue"]
-4 -> 4 [label = "getMethodParamInfo" color="blue"]
-3 -> 4 [label = "getAllMethodParameters" color="blue"]
+    11 -> 10 [color = "red" dir = "both"];
+    12 -> 10 [color = "red" dir = "both"];
 
-5 -> 5 [label = "getAllAssociationsID" color="blue"]
-5 -> 5 [label = "getAssociationInfo" color="blue"]
-0 -> 5 [label = "getAssociations" color="blue"]
+    12 -> 11 [color = "red" dir = "both"];
+    13 -> 11 [color = "red" dir = "both"];
+    14 -> 11 [color = "red" dir = "both"];
 
-6 -> 6 [label = "getAllAssociationEndsID" color="blue"]
-6 -> 6 [label = "getAssociationEndInfo" color="blue"]
-0 -> 6 [label = "getAssociationEnds" color="blue"]
-1 -> 6 [label = "getAssociationEnds" color="blue"]
-5 -> 6 [label = "getAssociationEnds" color="blue"]
+    13 -> 12 [color = "red" dir = "both"];
+    14 -> 12 [color = "red"];
+    15 -> 12 [color = "red" dir = "both"];
 
-7 -> 7 [label = "getAllDependencies" color="blue"]
-7 -> 7 [label = "getDependencyInfo" color="blue"]
-0 -> 7 [label = "getDependencies" color="blue"]
-1 -> 6 [label = "getDependencies" color="blue"]
-1 -> 6 [label = "getDependencies" color="blue"]
+    11 -> 15 [color = "red"];
+    }
 
-8 -> 8 [label = "getAllRealizationsID" color="blue"]
-8 -> 8 [label = "getRealizationInfo" color="blue"]
-0 -> 8 [label = "getRealizationsID" color="blue"]
-1 -> 6 [label = "getRealizations" color="blue"]
-1 -> 6 [label = "getRealizations" color="blue"]
+    subgraph ClassDiagram {
 
-9 -> 9 [label = "getAllGeneralizationsID" color="blue"]
-9 -> 9 [label = "getGeneralizationInfo" color="blue"]
-0 -> 8 [label = "getGeneralizations" color="blue"]
-1 -> 6 [label = "getGeneralizations" color="blue"]
-1 -> 6 [label = "getGeneralizations" color="blue"]
+    rankdir = LR
+    color = lightgrey;
+    node [style = filled,color = white];
+    label = "Class Diagram Details";
+
+    0 [label = "Diagram"];
+    1 [label = "Class"];
+    2 [label = "Attribute"];
+    3 [label = "Method"];
+    4 [label = "MethodParameter"];
+    5 [label = "Association"];
+    6 [label = "AssociationEnd"];
+    7 [label = "Dependency"];
+    8 [label = "Realization"];
+    9 [label = "Generalization"];
+
+    1 -> 0 [color = "blue" dir = "both"];
+    2 -> 0 [color = "blue"];
+    3 -> 0 [color = "blue"];
+    4 -> 0 [color = "blue"];
+    5 -> 0 [color = "blue"];
+    6 -> 0 [color = "blue" dir = "both"];
+    7 -> 0 [color = "blue" dir = "both"];
+    8 -> 0 [color = "blue" dir = "both"];
+    9 -> 0 [color = "blue" dir = "both"];
+
+    2 -> 1 [color = "blue" dir = "both"];
+    3 -> 1 [color = "blue" dir = "both"];
+    4 -> 1 [color = "blue"];
+    5 -> 1 [color = "blue"]; //Get the two classes associated
+    6 -> 1 [color = "blue" dir = "both"];
+    7 -> 1 [color = "blue" dir = "both"];
+    8 -> 1 [color = "blue" dir = "both"];
+    9 -> 1 [color = "blue" dir = "both"];
+
+    4 -> 3 [color = "blue" dir = "both"];
+
+    0 -> 5 [color = "blue"];
+
+    5 -> 6 [color = "blue"];
+    }
+
+
+
 }
 
