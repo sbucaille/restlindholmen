@@ -11,7 +11,12 @@
       "dependency" : "cd_dependency",
       "realization" : "cd_realization",
       "generalization" : "cd_generalization",
-      "repository": "repos"
+      "umlfile" : "umlfiles",
+      "commit": "commits",
+      "filecommit" : "filecommits",
+      "repository": "repos",
+      "people" : "people",
+      "user" : "users"
     },
     "tableListContent": {
       "diagram" : [
@@ -23,7 +28,7 @@
         "name",
         "xmiID",
         "visibility",
-        "classDiagramID"
+        "diagramID"
       ],
       "attribute": [
         "id",
@@ -49,13 +54,13 @@
       "association": [
         "id",
         "xmiID",
-        "classDiagramID",
+        "diagramID",
         "visibility"
       ],
       "associationEnd": [
         "id",
         "xmiID",
-        "classDiagramID",
+        "diagramID",
         "associationID",
         "classID",
         "name",
@@ -66,7 +71,7 @@
       "dependency": [
         "id",
         "xmiID",
-        "classDiagramID",
+        "diagramID",
         "name",
         "supplierClassID",
         "clientClassID"
@@ -74,7 +79,7 @@
       "realization": [
         "id",
         "xmiID",
-        "classDiagramID",
+        "diagramID",
         "name",
         "supplierClassID",
         "clientClassID"
@@ -82,10 +87,65 @@
       "generalization": [
         "id",
         "xmiID",
-        "classDiagramID",
+        "diagramID",
         "name",
         "childClassID",
         "parentClassID"
+      ],
+      "umlfile": [
+        "id",
+        "name",
+        "url",
+        "commitID",
+        "repositoryID",
+        "diagramID",
+        "type"
+      ],
+      "commit" : [
+        "id",
+        "gitHubCommitID",
+        "peopleID",
+        "date",
+        "coChanged",
+        "repositoryID"
+      ],
+      "filecommit" : [
+        "id",
+        "name",
+        "commitID",
+        "repositoryID",
+        "type"
+      ],
+      "repository" : [
+        "id",
+        "name",
+        "founder",
+        "url",
+        "numberOfCommits",
+        "dateFirstCommit",
+        "dateLastCommit"
+      ],
+      "people" : [
+        "id",
+        "name",
+        "mail"
+      ],
+      "user" : [
+        "id",
+        "login",
+        "name",
+        "company",
+        "location",
+        "email",
+        "createdAt",
+        "type",
+        "fake",
+        "deleted",
+        "longitude",
+        "latitude",
+        "countryCode",
+        "state",
+        "city"
       ]
     },
     "tableContent": {
@@ -124,24 +184,24 @@
       "association": {
         "id": "id",
         "xmiID": "assoc_xmi_id",
-        "classDiagramID": "xmi_id",
+        "diagramID": "xmi_id",
         "visibility": "assoc_visibility"
       },
       "associationEnd": {
         "id": "id",
         "xmiID": "assocEnd_xmi_id",
-        "classDiagramID": "xmi_id",
+        "diagramID": "xmi_id",
         "classID": "cls_id",
         "associationID": "assoc_id",
         "name": "assocEnd_name",
         "isNavigable": "assocEnd_isNavigable",
         "ordering": "assocEnd_ordering",
-        "aggregation": "assocEnd_aggragation"
+        "aggregation": "assocEnd_aggregation"
       },
       "dependency": {
         "id": "id",
         "xmiID": "dep_xmi_id",
-        "classDiagramID": "xmi_id",
+        "diagramID": "xmi_id",
         "name": "dep_name",
         "supplierClassID": "dep_supplier",
         "clientClassID": "dep_client"
@@ -149,7 +209,7 @@
       "realization": {
         "id": "id",
         "xmiID": "real_xmi_id",
-        "classDiagramID": "xmi_id",
+        "diagramID": "xmi_id",
         "name": "real_name",
         "supplierClassID": "real_supplier",
         "clientClassID": "real_client"
@@ -157,10 +217,65 @@
       "generalization": {
         "id": "id",
         "xmiID": "gen_xmi_id",
-        "classDiagramID": "xmi_id",
+        "diagramID": "xmi_id",
         "name": "gen_name",
         "childClassID": "gen_child",
         "parentClassID": "gen_parent"
+      },
+      "umlfile" : {
+        "id" : "id",
+        "name" : "name",
+        "url" : "url",
+        "commitID" : "commits_id",
+        "repositoryID" : "repo_id",
+        "diagramID" : "has_xmi",
+        "type" : "uml_type"
+      },
+      "commit" : {
+        "id": "id",
+        "gitHubCommitID" : "gh_id",
+        "peopleID" : "people_id",
+        "date" : "commit_date",
+        "coChanged" : "cochanged",
+        "repositoryID" : "repos_id"
+      },
+      "filecommit" : {
+        "id" : "id",
+        "name" : "name",
+        "commitID" : "commit_id",
+        "repositoryID" : "repos_id",
+        "type" : "filetype"
+      },
+      "repository" : {
+        "id" : "id",
+        "name" : "name",
+        "founder" : "founder",
+        "url" : "url",
+        "numberOfCommits" : "number_commits",
+        "dateFirstCommit" : "first_commit",
+        "dateLastCommit" : "last_commit"
+      },
+      "people" : {
+        "id" : "id",
+        "name" : "name",
+        "email" : "email"
+      },
+      "user": {
+        "id" : "id",
+        "login" : "login",
+        "name" : "name",
+        "company" : "company",
+        "location" : "location",
+        "email" : "email",
+        "createdAt" : "created_at",
+        "type" : "type",
+        "fake" : "fake",
+        "deleted" : "deleted",
+        "longitude" : "longi",
+        "latitude" : "lat",
+        "countryCode" : "country_code",
+        "state" : "state",
+        "city" : "city"
       }
     }
   }
