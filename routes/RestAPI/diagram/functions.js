@@ -15,7 +15,7 @@ let getAllDiagramsID = async () => {
 	return resultManipulation.getArrayFromResult(
 		await knex
 			.select('id')
-			.from(dbTableNames.classDiagram)
+			.from(dbTableNames.diagram)
 	)
 };
 
@@ -38,7 +38,7 @@ let getDiagramIDFromClass = async (classID) => {
 	return await knex
 		.select(
 			dbTableContent.class.id + ' as parameter',
-			dbTableContent.class.classDiagramID
+			dbTableContent.class.diagramID
 		)
 		.from(dbTableNames.class)
 		.whereIn(dbTableContent.class.id, classID)
@@ -48,7 +48,7 @@ let getDiagramIDFromAttribute = async (attributeID) => {
 	return await knex
 		.select(
 			dbTableNames.attribute + '.' + dbTableContent.attribute.id + ' as parameter',
-			dbTableContent.class.classDiagramID
+			dbTableContent.class.diagramID
 		)
 		.from(dbTableNames.class)
 		.innerJoin(
@@ -67,7 +67,7 @@ let getDiagramIDFromMethod = async (methodID) => {
 	return await knex
 		.select(
 			dbTableNames.method + '.' + dbTableContent.method.id + ' as parameter',
-			dbTableContent.class.classDiagramID
+			dbTableContent.class.diagramID
 		)
 		.from(dbTableNames.class)
 		.innerJoin(
@@ -86,7 +86,7 @@ let getDiagramIDFromMethodParameter = async (methodParameterID) => {
 	return await knex
 		.select(
 			dbTableNames.methodParam + '.' + dbTableContent.methodParam.id + ' as parameter',
-			dbTableContent.class.classDiagramID
+			dbTableContent.class.diagramID
 		)
 		.from(dbTableNames.class)
 		.innerJoin(
@@ -111,7 +111,7 @@ let getDiagramIDFromAssociation = async (associationID) => {
 	return await knex
 		.select(
 			dbTableContent.association.id + ' as parameter',
-			dbTableContent.association.classDiagramID
+			dbTableContent.association.diagramID
 		)
 		.from(dbTableNames.association)
 		.whereIn(dbTableContent.association.id, associationID)
@@ -121,7 +121,7 @@ let getDiagramIDFromAssociationEnd = async (associationEndID) => {
 	return await knex
 		.select(
 			dbTableContent.associationEnd.id + ' as parameter',
-			dbTableContent.associationEnd.classDiagramID
+			dbTableContent.associationEnd.diagramID
 		)
 		.from(dbTableNames.associationEnd)
 		.whereIn(dbTableContent.associationEnd.id, associationEndID)
@@ -131,7 +131,7 @@ let getDiagramIDFromDependency = async (dependencyID) => {
 	return await knex
 		.select(
 			dbTableContent.dependency.id + ' as parameter',
-			dbTableContent.dependency.classDiagramID
+			dbTableContent.dependency.diagramID
 		)
 		.from(dbTableNames.dependency)
 		.whereIn(dbTableContent.dependency.id, dependencyID)
@@ -141,7 +141,7 @@ let getDiagramIDFromRealization = async (realizationID) => {
 	return await knex
 		.select(
 			dbTableContent.realization.id + ' as parameter',
-			dbTableContent.realization.classDiagramID
+			dbTableContent.realization.diagramID
 		)
 		.from(dbTableNames.realization)
 		.whereIn(dbTableContent.realization.id, realizationID)
@@ -151,7 +151,7 @@ let getDiagramIDFromGeneralization = async (generalizationID) => {
 	return await knex
 		.select(
 			dbTableContent.generalization.id + ' as parameter',
-			dbTableContent.generalization.classDiagramID
+			dbTableContent.generalization.diagramID
 		)
 		.from(dbTableNames.generalization)
 		.whereIn(dbTableContent.generalization.id, generalizationID)

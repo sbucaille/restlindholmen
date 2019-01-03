@@ -23,8 +23,8 @@ router.get('/id', async (req, res, next) => {
 })
 
 router.get('/fromDiagram', async (req, res, next) => {
-	let classDiagramId = req.query.classDiagramId;
-	let results = await attributeRequests.getListOfAttributeIdsFromClassDiagram(classDiagramId);
+	let diagramID = req.query.diagramID;
+	let results = await attributeRequests.getListOfAttributeIdsFromClassDiagram(diagramID);
 	res.send(results);
 })
 

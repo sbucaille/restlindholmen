@@ -48,12 +48,12 @@ let getGeneralizationsFromDiagram = async (diagramID) => {
     return resultManipulation.getResultWithLinkedParameter(
         await knex
             .select(
-                dbTableContent.generalization.classDiagramID + ' as parameter',
+                dbTableContent.generalization.diagramID + ' as parameter',
                 dbTableContent.generalization.id
             )
             .from(dbTableNames.generalization)
             .whereIn(
-                dbTableContent.generalization.classDiagramID,
+                dbTableContent.generalization.diagramID,
                 diagramID
             )
     )

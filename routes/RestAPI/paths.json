@@ -11,7 +11,13 @@
       "associationEnd",
       "dependency",
       "realization",
-      "generalization"
+      "generalization",
+      "umlfile",
+      "commit",
+      "repository",
+      "filecommit",
+      "people",
+      "user"
     ]
   },
   "secondaryPath": {
@@ -77,8 +83,8 @@
         "fromRealization",
         "fromGeneralization"
       ],
-      "info": "getClassInfo",
       "allID": "getAllClassesID",
+      "info": "getClassInfo",
       "fromDiagram": "getClassesFromDiagram",
       "fromAttribute": "getClassIDFromAttribute",
       "fromMethod": "getClassIDFromMethod",
@@ -112,69 +118,150 @@
       "fromMethod": "getMethodParamsFromMethod"
     },
     "association": {
-      "pathList" : [
+      "pathList": [
         "allID",
         "info",
         "fromDiagram"
       ],
-      "allID" : "getAllAssociationsID",
-      "info" : "getAssociationInfo",
-      "fromDiagram" : "getAssociationsFromDiagram"
+      "allID": "getAllAssociationsID",
+      "info": "getAssociationInfo",
+      "fromDiagram": "getAssociationsFromDiagram"
     },
     "associationEnd": {
-      "pathList" : [
+      "pathList": [
         "allID",
         "info",
         "fromDiagram",
         "fromAssociation",
         "fromClass"
       ],
-      "allID" : "getAllAssociationEndsID",
-      "info" : "getAssociationEndInfo",
-      "fromDiagram" : "getAssociationEndsFromDiagram",
-      "fromAssociation" : "getAssociationEndsFromAssociation"
+      "allID": "getAllAssociationEndsID",
+      "info": "getAssociationEndInfo",
+      "fromDiagram": "getAssociationEndsFromDiagram",
+      "fromAssociation": "getAssociationEndsFromAssociation"
     },
     "dependency": {
-      "pathList" : [
+      "pathList": [
         "allID",
         "info",
         "fromDiagram",
         "fromSupplierClass",
         "fromClientClass"
       ],
-      "allID" : "getAllDependenciesID",
+      "allID": "getAllDependenciesID",
       "info": "getDependencyInfo",
-      "fromDiagram" : "getDependenciesFromDiagram",
-      "fromSupplierClass" : "getDependenciesFromSupplierClass",
-      "fromClientClass" : "getDependenciesFromClientClass"
+      "fromDiagram": "getDependenciesFromDiagram",
+      "fromSupplierClass": "getDependenciesFromSupplierClass",
+      "fromClientClass": "getDependenciesFromClientClass"
     },
     "realization": {
-      "pathList" : [
+      "pathList": [
         "allID",
         "info",
         "fromDiagram",
         "fromSupplierClass",
         "fromClientClass"
       ],
-      "allID" : "getAllRealizationsID",
+      "allID": "getAllRealizationsID",
       "info": "getRealizationInfo",
-      "fromDiagram" : "getRealizationsIDFromDiagram",
-      "fromSupplierClass" : "getRealizationsFromSupplierClass",
-      "fromClientClass" : "getRealizationsFromClientClass"
+      "fromDiagram": "getRealizationsIDFromDiagram",
+      "fromSupplierClass": "getRealizationsFromSupplierClass",
+      "fromClientClass": "getRealizationsFromClientClass"
     },
     "generalization": {
-      "pathList" : [
+      "pathList": [
         "allID",
         "info",
         "fromDiagram",
         "fromChildClass",
         "fromParentClass"
       ],
-      "allID" : "getAllGeneralizationsID",
-      "info" : "getGeneralizationInfo",
-      "fromDiagram" : "getGeneralizationsFromDiagram",
-      "fromChildClass" : "getGeneralizationsFromChildClass",
-      "fromParentClass" : "getGeneralizationsFromParentClass"
+      "allID": "getAllGeneralizationsID",
+      "info": "getGeneralizationInfo",
+      "fromDiagram": "getGeneralizationsFromDiagram",
+      "fromChildClass": "getGeneralizationsFromChildClass",
+      "fromParentClass": "getGeneralizationsFromParentClass"
+    },
+    "umlfile": {
+      "pathList": [
+        "allID",
+        "info",
+        "fromDiagram",
+        "fromRepository",
+        "fromCommit"
+      ],
+      "allID": "getAllUmlFilesID",
+      "info": "getUmlFileInfo",
+      "fromDiagram": "getUmlFileFromDiagram",
+      "fromRepository": "getUmlFileFromRepository",
+      "fromCommit": "getUmlFileFromCommit"
+    },
+    "commit": {
+      "pathList": [
+        "allID",
+        "info",
+        "fromUmlFile",
+        "fromRepository",
+        "fromPeople",
+        "fromFileCommit",
+        "fromUser"
+      ],
+      "allID": "getAllCommitsID",
+      "info": "getCommitInfo",
+      "fromDiagram": "getCommitFromDiagram",
+      "fromRepository": "getCommitFromRepository",
+      "fromPeople": "getCommitFromPeople",
+      "fromFileCommit": "getCommitFromFileCommit"
+    },
+    "repository": {
+      "pathList": [
+        "allID",
+        "info",
+        "fromCommit",
+        "fromFounder",
+        "fromFileCommit",
+        "fromUmlFile"
+      ],
+      "allID": "getAllRepositoriesID",
+      "info": "getRepositoryInfo",
+      "fromCommit": "getRepositoryFromCommit",
+      "fromFounder": "getRepositoryFromFounder",
+      "fromFileCommit": "getRepositoryFromFileCommit",
+      "fromUmlFile": "getRepositoryFromUmlFile"
+    },
+    "filecommit": {
+      "pathList": [
+        "allID",
+        "info",
+        "fromCommit",
+        "fromRepository"
+      ],
+      "allID": "getAllFileCommitsID",
+      "info": "getFileCommitInfo",
+      "fromCommit": "getFileCommitFromCommit",
+      "fromRepository": "getFileCommitFromRepository"
+    },
+    "people": {
+      "pathList": [
+        "allID",
+        "info",
+        "fromCommit"
+      ],
+      "allID": "getAllPeopleID",
+      "info": "getPeopleInfo",
+      "fromCommit": "getPeopleFromCommit"
+    },
+    "user": {
+      "pathList": [
+        "allID",
+        "info",
+        "fromRepository",
+        "fromCommit"
+      ],
+      "allID": "getAllUsersID",
+      "info": "getUserInfo",
+      "fromRepository": "getFounderOfRepository",
+      "fromCommit": "getUserFromCommit"
     }
   },
   "parameterNames": {
@@ -227,37 +314,77 @@
       "getMethodParamsFromMethod": "methodID"
     },
     "association": {
-      "getAllAssociationsID" : "null",
-      "getAssociationInfo" : "associationID",
-      "getAssociationsFromDiagram" : "diagramID"
+      "getAllAssociationsID": "null",
+      "getAssociationInfo": "associationID",
+      "getAssociationsFromDiagram": "diagramID"
     },
     "associationEnd": {
-      "getAllAssociationEndsID" : "null",
-      "getAssociationEndInfo" : "associationEndID",
-      "getAssociationEndsFromDiagram" : "diagramID",
-      "getAssociationEndsFromClass" : "classID",
-      "getAssociationEndsFromAssociation" : "associationID"
+      "getAllAssociationEndsID": "null",
+      "getAssociationEndInfo": "associationEndID",
+      "getAssociationEndsFromDiagram": "diagramID",
+      "getAssociationEndsFromClass": "classID",
+      "getAssociationEndsFromAssociation": "associationID"
     },
     "dependency": {
-      "getAllDependenciesID" : "null",
-      "getDependencyInfo" : "dependencyID",
-      "getDependenciesFromDiagram" : "diagramID",
-      "getDependenciesFromSupplierClass" : "classID",
-      "getDependenciesFromClientClass" : "classID"
+      "getAllDependenciesID": "null",
+      "getDependencyInfo": "dependencyID",
+      "getDependenciesFromDiagram": "diagramID",
+      "getDependenciesFromSupplierClass": "classID",
+      "getDependenciesFromClientClass": "classID"
     },
     "realization": {
-      "getAllRealizationsID" : "null",
-      "getRealizationInfo" : "realizationID",
-      "getRealizationsIDFromDiagram" : "diagramID",
-      "getRealizationsFromSupplierClass" : "classID",
-      "getRealizationsFromClientClass" : "classID"
+      "getAllRealizationsID": "null",
+      "getRealizationInfo": "realizationID",
+      "getRealizationsIDFromDiagram": "diagramID",
+      "getRealizationsFromSupplierClass": "classID",
+      "getRealizationsFromClientClass": "classID"
     },
     "generalization": {
-      "getAllGeneralizationsID" : "null",
-      "getGeneralizationInfo" : "generalizationID",
-      "getGeneralizationsFromDiagram" : "diagramID",
-      "getGeneralizationsFromChildClass" : "classID",
-      "getGeneralizationsFromParentClass" : "classID"
+      "getAllGeneralizationsID": "null",
+      "getGeneralizationInfo": "generalizationID",
+      "getGeneralizationsFromDiagram": "diagramID",
+      "getGeneralizationsFromChildClass": "classID",
+      "getGeneralizationsFromParentClass": "classID"
+    },
+    "umlfile": {
+      "getAllUmlFilesID": "null",
+      "getUmlFileInfo": "umlFileID",
+      "getUmlFileFromDiagram": "diagramID",
+      "getUmlFileFromRepository": "repositoryID",
+      "getUmlFileFromCommit": "commitID"
+    },
+    "commit": {
+      "getAllCommitsID": "null",
+      "getCommitInfo": "commitID",
+      "getCommitFromDiagram": "diagramID",
+      "getCommitFromRepository": "repositoryID",
+      "getCommitFromPeople": "peopleID",
+      "getCommitFromFileCommit": "fileCommitID"
+    },
+    "repository": {
+      "getAllRepositoriesID": "null",
+      "getRepositoryInfo": "repositoryID",
+      "getRepositoryFromCommit": "commitID",
+      "getRepositoryFromFounder": "founderName",
+      "getRepositoryFromFileCommit": "fileCommitID",
+      "getRepositoryFromUmlFile": "umlFileID"
+    },
+    "filecommit": {
+      "getAllFileCommitsID": "null",
+      "getFileCommitInfo": "fileCommitID",
+      "getFileCommitFromCommit": "commitID",
+      "getFileCommitFromRepository": "repositoryID"
+    },
+    "people": {
+      "getAllPeopleID": "null",
+      "getPeopleInfo": "peopleID",
+      "getPeopleFromCommit": "commitID"
+    },
+    "user": {
+      "getAllUsersID": "null",
+      "getUserInfo": "userID",
+      "getFounderOfRepository": "founderName",
+      "getUserFromCommit": "commitID"
     }
   }
 }

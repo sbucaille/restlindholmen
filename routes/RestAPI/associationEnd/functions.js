@@ -48,12 +48,12 @@ let getAssociationEndsFromDiagram = async (diagramID) => {
     return resultManipulation.getResultWithLinkedParameter(
         await knex
             .select(
-                dbTableContent.associationEnd.classDiagramID + ' as parameter',
+                dbTableContent.associationEnd.diagramID + ' as parameter',
                 dbTableContent.associationEnd.id
             )
             .from(dbTableNames.associationEnd)
             .whereIn(
-                dbTableContent.associationEnd.classDiagramID,
+                dbTableContent.associationEnd.diagramID,
                 diagramID
             )
     )
