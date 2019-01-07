@@ -11,6 +11,10 @@ class AssociationEnd extends Entity{
 		super(id, loadInfos, "associationEnd");
 	}
 
+    static entityStringType(){
+        return "associationEnd";
+    }
+
     /**
      * Returns the name of the association end.
      * @returns {string}

@@ -1,12 +1,13 @@
 /*
- * Developed by Steven BUCAILLE on 11/29/18 7:55 PM.
- * Last modified 11/29/18 7:55 PM.
- * Copyright (c) 2018. All right reserved.
+ * Developed by Steven BUCAILLE on 1/4/19 2:09 PM.
+ * Last modified 12/27/18 5:18 PM .
+ * Copyright (c) 2019. All right reserved.
  *
  */
 
 console.log("init");
 let dbschema;
+document.EntityInstances = {};
 
 async function httpGet(url, argument) {
 	const rawResponse = await fetch(url, {

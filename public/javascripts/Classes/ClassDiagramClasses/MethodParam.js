@@ -11,6 +11,10 @@ class MethodParam extends Entity{
 		super(id, loadInfos, "methodParam");
 	}
 
+    static entityStringType(){
+        return "methodParam";
+    }
+
     /**
      * Returns the name of the method parameter.
      * @returns {string}

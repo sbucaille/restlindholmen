@@ -11,6 +11,10 @@ class Generalization extends Entity{
 		super(id, loadInfos, 'generalization');
 	}
 
+    static entityStringType(){
+        return "generalization";
+    }
+
     /**
      * Returns the name of the generalization.
      * @returns {string}

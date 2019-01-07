@@ -35,6 +35,10 @@ class Diagram extends Entity {
         this.setupAssociationEndProxy();
     }
 
+    static entityStringType(){
+        return "diagram";
+    }
+
     /**
      * Return the filename parameter of the diagram.
      * @returns {string}
@@ -52,7 +56,6 @@ class Diagram extends Entity {
         if (this._classes.areIDLoaded) return this._classProxy;
         else throw new ListOfIDNotLoadedException("classes");
     }
-
 
     /**
      * Returns a Proxy object containing all the associations related to the current diagram.

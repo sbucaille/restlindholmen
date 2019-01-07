@@ -21,6 +21,10 @@ class Method extends Entity{
         this.setupMethodParamProxy()
 	}
 
+    static entityStringType(){
+        return "method";
+    }
+
     /**
      * Returns the name of the method.
      * @returns {string}

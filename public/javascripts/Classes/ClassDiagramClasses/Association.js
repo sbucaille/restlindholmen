@@ -13,12 +13,16 @@ class Association extends Entity {
         this._associationEnds = {
             idList: [],
             areIDLoaded: false
-        }
+        };
 
         if (loadInfos) {
             this.loadAssociationEndsID();
         }
         this.setupAssociationEndProxy();
+    }
+
+    static entityStringType(){
+        return "association";
     }
 
     /**

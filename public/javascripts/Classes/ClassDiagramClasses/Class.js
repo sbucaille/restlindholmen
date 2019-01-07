@@ -28,6 +28,10 @@ class Class extends Entity {
         this.setupMethodProxy();
     }
 
+    static entityStringType(){
+        return "class";
+    }
+
     /**
      * Returns the name of the class.
      * @returns {string}

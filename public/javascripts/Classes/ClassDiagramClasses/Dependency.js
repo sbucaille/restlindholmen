@@ -1,18 +1,23 @@
 /*
- * Developed by Steven BUCAILLE on 11/27/18 6:17 PM.
- * Last modified 11/27/18 6:17 PM.
+ * Developed by Steven BUCAILLE on 11/27/18 6:13 PM.
+ * Last modified 11/27/18 6:13 PM.
  * Copyright (c) 2018. All right reserved.
  *
  */
 
-class Realization extends Entity{
+class Dependency extends Entity {
+
 
     constructor(id, loadInfos = false) {
-        super(id, loadInfos, "realization");
+        super(id, loadInfos, "dependency");
+    }
+
+    static entityStringType(){
+        return "dependency";
     }
 
     /**
-     * Returns the name of the realization.
+     * Returns the name of the dependency.
      * @returns {string}
      * @throws InfosNotLoadedException
      */
@@ -21,7 +26,7 @@ class Realization extends Entity{
     }
 
     /**
-     * Returns the xmi id of the realization.
+     * Returns the xmi id of the dependency.
      * @returns {string}
      * @throws InfosNotLoadedException
      */
@@ -30,7 +35,7 @@ class Realization extends Entity{
     }
 
     /**
-     * Returns the supplier class ID of the realization.
+     * Returns the supplier class ID of the dependency.
      * @returns {string}
      * @throws InfosNotLoadedException
      */
@@ -39,7 +44,7 @@ class Realization extends Entity{
     }
 
     /**
-     * Returns the client class ID of the realization.
+     * Returns the client class ID of the dependency.
      * @returns {string}
      * @throws InfosNotLoadedException
      */
@@ -48,7 +53,7 @@ class Realization extends Entity{
     }
 
     /**
-     * Returns the diagram id of the realization.
+     * Returns the diagram id of the dependency.
      * @returns {string}
      * @throws InfosNotLoadedException
      */
@@ -57,23 +62,23 @@ class Realization extends Entity{
     }
 
     /**
-     * Loads all info related to the current realization :
+     * Loads all info related to the current dependency :
      *  - name
-     *  - XMI Realization ID
+     *  - XMI Dependency ID
      *  - supplier Class ID
      *  - client Class ID
      *  - diagram ID
      * @returns {Promise<void>}
-     * @throws InfosAlreadyLoadedException if the realization infos are already loaded.
+     * @throws InfosAlreadyLoadedException if the dependency infos are already loaded.
      */
     async loadInfo() {
         if (!this._infoLoaded) {
-            let info = await RealizationWrapper.getInfo(this.id);
-            this._name = info[0][dbschema.db.tableContent.realization.name];
-            this._xmiID = info[0][dbschema.db.tableContent.realization.xmiID];
-            this._diagramID = info[0][dbschema.db.tableContent.realization.diagramID];
-            this._supplierClassID = info[0][dbschema.db.tableContent.realization.supplierClassID];
-            this._clientClassID = info[0][dbschema.db.tableContent.realization.clientClassID];
+            let info = await DependencyWrapper.getInfo(this.id);
+            this._name = info[0][dbschema.db.tableContent.dependency.name];
+            this._xmiID = info[0][dbschema.db.tableContent.dependency.xmiID];
+            this._diagramID = info[0][dbschema.db.tableContent.dependency.diagramID];
+            this._supplierClassID = info[0][dbschema.db.tableContent.dependency.supplierClassID];
+            this._clientClassID = info[0][dbschema.db.tableContent.dependency.clientClassID];
 
             this._infoLoaded = true;
         }

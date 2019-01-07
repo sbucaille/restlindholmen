@@ -120,99 +120,149 @@ class MethodParamWrapper {
 }
 
 class AssociationWrapper {
-    static async getAssociations(){
+    static async getAssociations() {
         return await httpGet('api/generics/association/allID', {});
     }
 
-    static async getInfo(associationID){
-        return await httpGet('api/generics/association/info', {associationID : associationID});
+    static async getInfo(associationID) {
+        return await httpGet('api/generics/association/info', {associationID: associationID});
     }
 
-    static async getAssociationsFromDiagram(diagramID){
-        return await httpGet('api/generics/association/fromDiagram', {diagramID : diagramID});
+    static async getAssociationsFromDiagram(diagramID) {
+        return await httpGet('api/generics/association/fromDiagram', {diagramID: diagramID});
     }
 }
 
 class AssociationEndWrapper {
-    static async getAssociationEnds(){
+    static async getAssociationEnds() {
         return await httpGet('api/generics/associationEnd/allID', {});
     }
 
-    static async getInfo(associationEndID){
-        return await httpGet('api/generics/associationEnd/info', {associationEndID : associationEndID});
+    static async getInfo(associationEndID) {
+        return await httpGet('api/generics/associationEnd/info', {associationEndID: associationEndID});
     }
 
-    static async getAssociationEndsFromDiagram(diagramID){
-        return await httpGet('api/generics/associationEnd/fromDiagram', {diagramID : diagramID});
+    static async getAssociationEndsFromDiagram(diagramID) {
+        return await httpGet('api/generics/associationEnd/fromDiagram', {diagramID: diagramID});
     }
 
-    static async getAssociationEndsFromAssociation(associationID){
-        return await httpGet('api/generics/associationEnd/fromAssociation', {associationID : associationID});
+    static async getAssociationEndsFromAssociation(associationID) {
+        return await httpGet('api/generics/associationEnd/fromAssociation', {associationID: associationID});
     }
 }
 
-class DependencyWrapper{
-    static async getDependencies(){
+class DependencyWrapper {
+    static async getDependencies() {
         return await httpGet('api/generics/dependency/allID', {});
     }
 
-    static async getInfo(dependencyID){
-        return await httpGet('api/generics/dependency/info', {dependencyID : dependencyID});
+    static async getInfo(dependencyID) {
+        return await httpGet('api/generics/dependency/info', {dependencyID: dependencyID});
     }
 
-    static async getDependenciesFromDiagram(diagramID){
-        return await httpGet('api/generics/dependency/fromDiagram', {diagramID : diagramID});
+    static async getDependenciesFromDiagram(diagramID) {
+        return await httpGet('api/generics/dependency/fromDiagram', {diagramID: diagramID});
     }
 
-    static async getDependenciesFromSupplierClass(classID){
-        return await httpGet('api/generics/dependency/fromSupplierClass', {classID : classID});
+    static async getDependenciesFromSupplierClass(classID) {
+        return await httpGet('api/generics/dependency/fromSupplierClass', {classID: classID});
     }
 
-    static async getDependenciesFromClientClass(classID){
-        return await httpGet('api/generics/dependency/fromClientClass', {classID : classID});
+    static async getDependenciesFromClientClass(classID) {
+        return await httpGet('api/generics/dependency/fromClientClass', {classID: classID});
     }
 }
 
-class RealizationWrapper{
-    static async getRealizations(){
+class RealizationWrapper {
+    static async getRealizations() {
         return await httpGet('api/generics/realization/allID', {});
     }
 
-    static async getInfo(realizationID){
-        return await httpGet('api/generics/realization/info', {realizationID : realizationID});
+    static async getInfo(realizationID) {
+        return await httpGet('api/generics/realization/info', {realizationID: realizationID});
     }
 
-    static async getRealizationsIDFromDiagram(diagramID){
-        return await httpGet('api/generics/realization/fromDiagram', {diagramID : diagramID});
+    static async getRealizationsIDFromDiagram(diagramID) {
+        return await httpGet('api/generics/realization/fromDiagram', {diagramID: diagramID});
     }
 
-    static async getRealizationsFromSupplierClass(classID){
-        return await httpGet('api/generics/realization/fromSupplierClass', {classID : classID});
+    static async getRealizationsFromSupplierClass(classID) {
+        return await httpGet('api/generics/realization/fromSupplierClass', {classID: classID});
     }
 
-    static async getRealizationsFromClientClass(classID){
-        return await httpGet('api/generics/realization/fromClientClass', {classID : classID});
+    static async getRealizationsFromClientClass(classID) {
+        return await httpGet('api/generics/realization/fromClientClass', {classID: classID});
     }
 }
 
-class GeneralizationWrapper{
-    static async getGeneralizations(){
+class GeneralizationWrapper {
+    static async getGeneralizations() {
         return await httpGet('api/generics/generalization/allID', {});
     }
 
-    static async getInfo(generalizationID){
-        return await httpGet('api/generics/generalization/info', {generalizationID : generalizationID});
+    static async getInfo(generalizationID) {
+        return await httpGet('api/generics/generalization/info', {generalizationID: generalizationID});
     }
 
-    static async getGeneralizationsIDFromDiagram(diagramID){
-        return await httpGet('api/generics/realization/fromDiagram', {diagramID : diagramID});
+    static async getGeneralizationsIDFromDiagram(diagramID) {
+        return await httpGet('api/generics/realization/fromDiagram', {diagramID: diagramID});
     }
 
-    static async getGeneralizationsFromChildClass(classID){
-        return await httpGet('api/generics/generalization/fromChildClass', {classID : classID});
+    static async getGeneralizationsFromChildClass(classID) {
+        return await httpGet('api/generics/generalization/fromChildClass', {classID: classID});
     }
 
-    static async getGeneralizationsFromParentClass(classID){
-        return await httpGet('api/generics/generalization/fromParentClass', {classID : classID});
+    static async getGeneralizationsFromParentClass(classID) {
+        return await httpGet('api/generics/generalization/fromParentClass', {classID: classID});
+    }
+}
+
+class UMLFileWrapper {
+    static async getUmlFiles() {
+        return await httpGet('api/generics/umlfile/allID', {});
+    }
+
+    static async getInfo(umlFileID) {
+        return await httpGet('api/generics/umlfile/info', {umlFileID: umlFileID});
+    }
+}
+
+class CommitWrapper {
+    static async getCommits() {
+        return await httpGet('api/generics/commit/allID', {});
+    }
+
+    static async getInfo(commitID) {
+        return await httpGet('api/generics/commit/info', {commitID: commitID});
+    }
+}
+
+class FileCommitWrapper {
+    static async getFileCommits() {
+        return await httpGet('api/generics/filecommit/allID', {});
+    }
+
+    static async getInfo(fileCommitID) {
+        return await httpGet('api/generics/filecommit/info', {fileCommitID: fileCommitID});
+    }
+}
+
+class UserWrapper {
+    static async getUsers() {
+        return await httpGet('api/generics/user/allID', {});
+    }
+
+    static async getInfo(userID) {
+        return await httpGet('api/generics/user/info', {userID: userID});
+    }
+}
+
+class RepositoryWrapper {
+    static async getRepositories() {
+        return await httpGet('api/generics/repository/allID', {});
+    }
+
+    static async getInfo(repositoryID) {
+        return await httpGet('api/generics/repository/info', {repositoryID: repositoryID})
     }
 }

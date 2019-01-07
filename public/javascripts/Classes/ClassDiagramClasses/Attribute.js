@@ -11,6 +11,10 @@ class Attribute extends Entity {
         super(id, loadInfos, "attribute");
     }
 
+    static entityStringType(){
+        return "attribute";
+    }
+
     /**
      * Returns the name of the attribute.
      * @returns {string}
@@ -54,6 +58,10 @@ class Attribute extends Entity {
      */
     get classID() {
         return this.genericGetter("_classID");
+    }
+
+    get class() {
+        return this.genericEntityGetter(this.classID, Class);
     }
 
     /**
