@@ -1,13 +1,12 @@
 /*
- * Developed by Steven BUCAILLE on 12/31/18 1:43 AM.
- * Last modified 12/31/18 1:43 AM .
- * Copyright (c) 2018. All right reserved.
+ * Developed by Steven BUCAILLE on 1/4/19 2:14 PM.
+ * Last modified 12/31/18 2:04 PM .
+ * Copyright (c) 2019. All right reserved.
  *
  */
 
-
-
 class Entity {
+
     constructor(id, loadInfos, entityType) {
         this.id = id;
         this._infoLoaded = false;
@@ -15,6 +14,7 @@ class Entity {
         if (loadInfos) {
             this.loadInfo();
         }
+        this.createEntityObjectInDocument();
     }
 
     genericGetter(parameter) {
@@ -23,6 +23,21 @@ class Entity {
         }
         else {
             throw new InfosNotLoadedException(this.entityType);
+        }
+    }
+
+    genericEntityGetter(entityID, type){
+        if(document.EntityInstances[type.entityStringType()]){
+            if(document.EntityInstances[type.entityStringType()][entityID]){
+                return document.EntityInstances[type.entityStringType()][entityID];
+            }
+            else{
+                return new type(entityID, false);
+            }
+        }
+        else{
+            document.EntityInstances[type.entityStringType()] = {};
+            return this.genericEntityGetter(entityID, type);
         }
     }
 
@@ -75,5 +90,15 @@ class Entity {
             else if (visibilityString.toLocaleLowerCase() === 'private') return VISIBILITY.PRIVATE;
         }
         else return null;
+    }
+
+    createEntityObjectInDocument() {
+        if(document.EntityInstances[this.entityType]){
+            document.EntityInstances[this.entityType][this.id] = this;
+        }
+        else{
+            document.EntityInstances[this.entityType] = {};
+            this.createEntityObjectInDocument();
+        }
     }
 }
