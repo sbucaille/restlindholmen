@@ -103,7 +103,7 @@
       ],
       "commit" : [
         "id",
-        "gitHubCommitID",
+        "githubCommitID",
         "peopleID",
         "date",
         "coChanged",
@@ -233,7 +233,7 @@
       },
       "commit" : {
         "id": "id",
-        "gitHubCommitID" : "gh_id",
+        "githubCommitID" : "gh_id",
         "peopleID" : "people_id",
         "date" : "commit_date",
         "coChanged" : "cochanged",
