@@ -7,32 +7,60 @@
 
 let knex = require('knex');
 let auth = require('../../auth').mysql;
-let dbshema = require('../../dbschema').db;
+let dbschema = require('../../dbschema').db;
 
 let db = require('knex')({
-	client: 'mysql',
-	connection: {
-		host 		: 'localhost',
-		user 		: auth.user,
-		password 	: auth.password,
-		database 	: auth.dbname
-	}
+    client: 'mysql',
+    connection: {
+        host: 'localhost',
+        user: auth.user,
+        password: auth.password,
+        database: auth.dbname
+    }
 });
 
 let test = async () => {
-	let select1 = db.select().from(dbshema.tableNames.diagram);
-	for (let i = 0; i < 5; i++) {
-		select1 = select1.orWhere(dbshema.tableContent.diagram.id, '=', i);
-	}
+    let select1 = db
+        .select()
+        .from(dbschema.tableNames.diagram)
+        .innerJoin(dbschema.tableNames.class, function(){
+            this.on(dbschema.tableNames.diagram + '.' + dbschema.tableContent.diagram.id,
+                '=',
+                dbschema.tableNames.class + '.' + dbschema.tableContent.class.diagramID)
+                .orOn(dbschema.tableNames.diagram + '.classID',
+                    '=',
+                    dbschema.tableNames.class + '.' + dbschema.tableContent.class.id)
+        });
 
-	console.log(select1.toString());
-	let result = await select1;
-	console.log(result);
+    console.log(select1.toString());
+    let result = await select1;
+    console.log(result);
 }
 
-test();
+let test3 = async () => {
+    let select = db.select().from(dbschema.tableNames.diagram);
+    select.innerJoin(dbschema.tableNames.class, dbschema.tableNames.diagram + '.' + dbschema.tableContent.diagram.id, dbschema.tableNames.class + '.' + dbschema.tableContent.class.diagramID);
+    select.where(dbschema.tableNames.class + '.' + dbschema.tableContent.class.name, 'like', "%product%");
+
+    console.log(select.toString());
+    let result = await select;
+    console.log(result);
+}
+
+let test2 = async () => {
+    let select1 = db.select()
+        .from('users', 'people')
+        .where('users.login', '=', 'people.name');
+
+
+    console.log(select1.toString());
+    let result = await select1;
+    console.log(result);
+}
+
+// test();
 
 module.exports = {
-	"knex" : db,
-	"dbshema" : dbshema
+    "knex": db,
+    "dbschema": dbschema
 };
