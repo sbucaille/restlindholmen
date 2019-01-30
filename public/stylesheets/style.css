@@ -13,3 +13,7 @@ body {
 a {
   color: #00B7FF;
 }
+
+.img-tab {
+    max-height:200px;
+}
