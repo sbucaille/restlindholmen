@@ -15,6 +15,7 @@ let requestFunctions = {
     class: require('../class/functions'),
     attribute: require('../attribute/functions'),
     method: require('../method/functions'),
+    methodParam : require('../methodParam/functions'),
     association: require('../association/functions'),
     associationEnd: require('../associationEnd/functions'),
     dependency: require('../dependency/functions'),
@@ -35,6 +36,11 @@ router.post('/:primaryPath/:secondaryPath', async (req, res, next) => {
     let secondaryPath = req.params.secondaryPath;
     let pathData = checkFunctions.checkPathExistence(primaryPath, secondaryPath);
     let parameterData = requestHandler.getDataFromQuery(req, pathData.dataName);
+    console.log(primaryPath);
+    console.log(secondaryPath);
+    console.log(pathData);
+    console.log(parameterData);
+
     try {
         let results;
         if (parameterData) {
@@ -56,10 +62,5 @@ router.post('/:primaryPath/:secondaryPath', async (req, res, next) => {
         res.sendStatus(400);
     }
 });
-
-router.post('/class/getAllInfo', async (req, res, next) => {
-    console.log("got it");
-    res.sendStatus(200);
-})
 
 module.exports = router;

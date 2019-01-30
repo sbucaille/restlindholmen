@@ -23,15 +23,9 @@
   "secondaryPath": {
     "testGeneric": {
       "pathList": [
-        "testPath",
-        "testPath2",
-        "testAntoine",
-        "testAlexis"
+        "testFilter"
       ],
-      "testPath": "getTestPath",
-      "testPath2": "getTestPath2",
-      "testAntoine": "getTestAntoine",
-      "testAlexis": "getTestAlexis"
+      "testFilter" : "getFilteredID"
     },
     "attribute": {
       "pathList": [
@@ -267,10 +261,7 @@
   },
   "parameterNames": {
     "testGeneric": {
-      "getTestPath": "null",
-      "getTestPath2": "testID",
-      "getTestAntoine": "antoineID",
-      "getTestAlexis": "alexisID"
+      "getFilteredID" : "filter"
     },
     "diagram": {
       "getAllDiagramsID": "null",
