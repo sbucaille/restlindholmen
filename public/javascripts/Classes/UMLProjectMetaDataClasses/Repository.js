@@ -8,7 +8,7 @@
 
 class Repository extends Entity {
 
-    constructor(id, loadInfos = false) {
+    constructor(id, loadInfos = autoLoadInfo) {
         super(id, loadInfos, "repository");
     }
 
@@ -32,6 +32,10 @@ class Repository extends Entity {
      */
     get founder() {
         return this.genericGetter("_founder");
+    }
+
+    get founder(){
+        return this.genericEntityGetter(this.founder, User);
     }
 
     /**

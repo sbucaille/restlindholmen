@@ -7,7 +7,7 @@
 
 class Association extends Entity {
 
-    constructor(id, loadInfos = false) {
+    constructor(id, loadInfos = autoLoadInfo) {
         super(id, loadInfos, "association");
 
         this._associationEnds = {
@@ -35,6 +35,15 @@ class Association extends Entity {
     }
 
     /**
+     * Returns the xmi id of the association.
+     * @returns {string}
+     * @throws InfosNotLoadedException
+     */
+    get xmiID() {
+        return this.genericGetter("_xmiID");
+    }
+
+    /**
      * Returns the diagram ID related to the association.
      * @returns {number}
      * @throws InfosNotLoadedException
@@ -43,13 +52,8 @@ class Association extends Entity {
         return this.genericGetter("_diagramID");
     }
 
-    /**
-     * Returns the xmi id of the association.
-     * @returns {string}
-     * @throws InfosNotLoadedException
-     */
-    get xmiID() {
-        return this.genericGetter("_xmiID");
+    get diagram() {
+        return this.genericEntityGetter(this.diagramID, Diagram);
     }
 
     get associationEnds() {
@@ -91,5 +95,9 @@ class Association extends Entity {
 
     setupAssociationEndProxy() {
         this._associationEndProxy = Entity.setupProxy(this._associationEnds, AssociationEnd)
+    }
+
+    async loadAllID(){
+        this.loadAssociationEndsID();
     }
 }

@@ -7,7 +7,7 @@
 
 class Realization extends Entity{
 
-    constructor(id, loadInfos = false) {
+    constructor(id, loadInfos = autoLoadInfo) {
         super(id, loadInfos, "realization");
     }
 
@@ -42,6 +42,10 @@ class Realization extends Entity{
         return this.genericGetter("_supplierClassID");
     }
 
+    get supplierClass(){
+        return this.genericEntityGetter(this.supplierClassID, Class);
+    }
+
     /**
      * Returns the client class ID of the realization.
      * @returns {string}
@@ -49,6 +53,10 @@ class Realization extends Entity{
      */
     get clientClassID() {
         return this.genericGetter("_clientClassID");
+    }
+
+    get clientClass(){
+        return this.genericEntityGetter(this.clientClassID, Class);
     }
 
     /**

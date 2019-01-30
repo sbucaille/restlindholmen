@@ -7,7 +7,7 @@
 
 class Generalization extends Entity{
 
-	constructor(id, loadInfos = false) {
+	constructor(id, loadInfos = autoLoadInfo) {
 		super(id, loadInfos, 'generalization');
 	}
 
@@ -42,6 +42,10 @@ class Generalization extends Entity{
         return this.genericGetter("_childClassID");
     }
 
+    get childClass(){
+        return this.genericEntityGetter(this.childClassID, Class);
+    }
+
     /**
      * Returns the parent class ID of the generalization.
      * @returns {string}
@@ -49,6 +53,10 @@ class Generalization extends Entity{
      */
     get parentClassID() {
         return this.genericGetter("_parentClassID");
+    }
+
+    get parentClass(){
+        return this.genericEntityGetter(this.parentClassID, Class);
     }
 
     /**

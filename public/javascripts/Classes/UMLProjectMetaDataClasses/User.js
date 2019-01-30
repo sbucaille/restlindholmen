@@ -7,7 +7,7 @@
 
 
 class User extends Entity {
-    constructor(id, loadInfos = false) {
+    constructor(id, loadInfos = autoLoadInfo) {
         super(id, loadInfos, "user");
     }
 

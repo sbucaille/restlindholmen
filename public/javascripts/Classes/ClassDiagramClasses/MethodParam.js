@@ -7,7 +7,7 @@
 
 class MethodParam extends Entity{
 
-	constructor(id, loadInfos = false) {
+	constructor(id, loadInfos = autoLoadInfo) {
 		super(id, loadInfos, "methodParam");
 	}
 
@@ -38,8 +38,12 @@ class MethodParam extends Entity{
      * @returns {number}
      * @throws InfosNotLoadedException
      */
-    get classID() {
+    get methodID() {
         return this.genericGetter("_methodID");
+    }
+
+    get method() {
+        return this.genericEntityGetter(this.methodID, Method);
     }
 
     /**

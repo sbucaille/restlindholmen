@@ -7,7 +7,7 @@
 
 class Method extends Entity{
 
-	constructor(id, loadInfos = false) {
+	constructor(id, loadInfos = autoLoadInfo) {
 	    super(id, loadInfos, "method");
 
 		this._methodParams = {
@@ -61,6 +61,10 @@ class Method extends Entity{
         return this.genericGetter("_classID");
     }
 
+    get class(){
+        return this.genericEntityGetter(this.classID, Class);
+    }
+
 
     get methodParams(){
 		return this._methodParamProxy;
@@ -105,6 +109,10 @@ class Method extends Entity{
 	setupMethodParamProxy(){
 		this._methodParamProxy = Entity.setupProxy(this._methodParams, MethodParam);
 	}
+
+	async loadAllID(){
+        this.loadMethodParamsID();
+    }
 
 
 }

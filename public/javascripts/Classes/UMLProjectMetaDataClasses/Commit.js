@@ -9,7 +9,7 @@
 
 class Commit extends Entity {
 
-    constructor(id, loadInfos = false) {
+    constructor(id, loadInfos = autoLoadInfo) {
         super(id, loadInfos, "commit");
     }
 
@@ -33,6 +33,10 @@ class Commit extends Entity {
      */
     get peopleID() {
         return this.genericGetter("_peopleID");
+    }
+
+    get people(){
+        return this.genericEntityGetter(this.peopleID, People);
     }
 
     /**
@@ -60,6 +64,10 @@ class Commit extends Entity {
      */
     get repositoryID() {
         return this.genericGetter("_repositoryID");
+    }
+
+    get repository(){
+        return this.genericEntityGetter(this.repositoryID, Repository);
     }
 
     /**

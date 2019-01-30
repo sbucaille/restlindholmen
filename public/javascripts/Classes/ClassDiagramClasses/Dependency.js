@@ -8,11 +8,11 @@
 class Dependency extends Entity {
 
 
-    constructor(id, loadInfos = false) {
+    constructor(id, loadInfos = autoLoadInfo) {
         super(id, loadInfos, "dependency");
     }
 
-    static entityStringType(){
+    static entityStringType() {
         return "dependency";
     }
 
@@ -43,6 +43,10 @@ class Dependency extends Entity {
         return this.genericGetter("_supplierClassID");
     }
 
+    get supplierClass() {
+        return this.genericEntityGetter(this.supplierClassID, Class);
+    }
+
     /**
      * Returns the client class ID of the dependency.
      * @returns {string}
@@ -52,6 +56,10 @@ class Dependency extends Entity {
         return this.genericGetter("_clientClassID");
     }
 
+    get clientClass() {
+        return this.genericEntityGetter(this.clientClassID, Class);
+    }
+
     /**
      * Returns the diagram id of the dependency.
      * @returns {string}
@@ -59,6 +67,10 @@ class Dependency extends Entity {
      */
     get diagramID() {
         return this.genericGetter("_diagramID");
+    }
+
+    get diagram() {
+        return this.genericEntityGetter(this.diagramID, Diagram);
     }
 
     /**

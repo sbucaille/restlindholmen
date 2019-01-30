@@ -7,7 +7,7 @@
 
 class AssociationEnd extends Entity{
 
-	constructor(id, loadInfos = false) {
+	constructor(id, loadInfos = autoLoadInfo) {
 		super(id, loadInfos, "associationEnd");
 	}
 
@@ -21,7 +21,7 @@ class AssociationEnd extends Entity{
      * @throws InfosNotLoadedException
      */
     get name() {
-        this.genericGetter("_name")
+        return this.genericGetter("_name")
     }
 
     /**
@@ -30,7 +30,7 @@ class AssociationEnd extends Entity{
      * @throws InfosNotLoadedException
      */
     get visibility() {
-        this.genericGetter("_visibility")
+        return this.genericGetter("_visibility")
     }
 
     /**
@@ -39,7 +39,7 @@ class AssociationEnd extends Entity{
      * @throws InfosNotLoadedException
      */
     get xmiID() {
-        this.genericGetter("_xmiID")
+        return this.genericGetter("_xmiID")
     }
 
     /**
@@ -48,7 +48,7 @@ class AssociationEnd extends Entity{
      * @throws InfosNotLoadedException
      */
     get isNavigable() {
-        this.genericGetter("_isNavigable")
+        return this.genericGetter("_isNavigable")
     }
 
     /**
@@ -57,7 +57,7 @@ class AssociationEnd extends Entity{
      * @throws InfosNotLoadedException
      */
     get ordering() {
-        this.genericGetter("_ordering")
+        return this.genericGetter("_ordering")
     }
 
     /**
@@ -66,7 +66,7 @@ class AssociationEnd extends Entity{
      * @throws InfosNotLoadedException
      */
     get aggregation() {
-        this.genericGetter("_aggregation")
+        return this.genericGetter("_aggregation")
     }
 
     /**
@@ -75,7 +75,11 @@ class AssociationEnd extends Entity{
      * @throws InfosNotLoadedException
      */
     get classID() {
-        this.genericGetter("_classID")
+        return this.genericGetter("_classID")
+    }
+
+    get class() {
+        return this.genericEntityGetter(this.classID, Class);
     }
 
     /**
@@ -84,7 +88,11 @@ class AssociationEnd extends Entity{
      * @throws InfosNotLoadedException
      */
     get diagramID() {
-        this.genericGetter("_diagramID")
+        return this.genericGetter("_diagramID")
+    }
+
+    get diagram() {
+        return this.genericEntityGetter(this.diagramID, Diagram);
     }
 
     /**
@@ -93,7 +101,11 @@ class AssociationEnd extends Entity{
      * @throws InfosNotLoadedException
      */
     get associationID() {
-        this.genericGetter("_associationID")
+        return this.genericGetter("_associationID")
+    }
+
+    get association() {
+        return this.genericEntityGetter(this.associationID, Association);
     }
 
     /**

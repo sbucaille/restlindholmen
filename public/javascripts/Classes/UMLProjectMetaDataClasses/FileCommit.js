@@ -8,7 +8,7 @@
 
 class FileCommit extends Entity {
 
-    constructor(id, loadInfos = false) {
+    constructor(id, loadInfos = autoLoadInfo) {
         super(id, loadInfos, "filecommit");
     }
 
@@ -34,6 +34,10 @@ class FileCommit extends Entity {
         return this.genericGetter("_commitID");
     }
 
+    get commit(){
+        return this.genericEntityGetter(this.commitID, Commit);
+    }
+
     /**
      * Return the repository ID of the file commit.
      * @returns {string}
@@ -41,6 +45,10 @@ class FileCommit extends Entity {
      */
     get repositoryID() {
         return this.genericGetter("_repositoryID");
+    }
+
+    get repository(){
+        return this.genericEntityGetter(this.repositoryID, Repository);
     }
 
     /**

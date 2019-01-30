@@ -26,17 +26,24 @@ class Entity {
         }
     }
 
+    /**
+     * Check if the instance of an Entity with given id is already loaded (in EntityInstances global object) and returns it.
+     * Otherwise, instance a new one, add it to EntityInstances global object and return it.
+     * @param entityID
+     * @param type
+     * @returns {*}
+     */
     genericEntityGetter(entityID, type){
-        if(document.EntityInstances[type.entityStringType()]){
-            if(document.EntityInstances[type.entityStringType()][entityID]){
-                return document.EntityInstances[type.entityStringType()][entityID];
+        if(EntityInstances[type.entityStringType()]){
+            if(EntityInstances[type.entityStringType()][entityID]){
+                return EntityInstances[type.entityStringType()][entityID];
             }
             else{
                 return new type(entityID, false);
             }
         }
         else{
-            document.EntityInstances[type.entityStringType()] = {};
+            EntityInstances[type.entityStringType()] = {};
             return this.genericEntityGetter(entityID, type);
         }
     }
@@ -92,12 +99,15 @@ class Entity {
         else return null;
     }
 
+    /**
+     * Add its Entity instance in EntityInstances global object
+     */
     createEntityObjectInDocument() {
-        if(document.EntityInstances[this.entityType]){
-            document.EntityInstances[this.entityType][this.id] = this;
+        if(EntityInstances[this.entityType]){
+            EntityInstances[this.entityType][this.id] = this;
         }
         else{
-            document.EntityInstances[this.entityType] = {};
+            EntityInstances[this.entityType] = {};
             this.createEntityObjectInDocument();
         }
     }

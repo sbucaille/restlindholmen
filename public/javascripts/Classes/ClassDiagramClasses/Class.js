@@ -7,7 +7,7 @@
 
 class Class extends Entity {
 
-    constructor(id, loadInfos = false) {
+    constructor(id, loadInfos = autoLoadInfo) {
         super(id, loadInfos, "class");
 
         this._attributes = {
@@ -28,7 +28,7 @@ class Class extends Entity {
         this.setupMethodProxy();
     }
 
-    static entityStringType(){
+    static entityStringType() {
         return "class";
     }
 
@@ -38,7 +38,7 @@ class Class extends Entity {
      * @throws InfosNotLoadedException
      */
     get name() {
-        this.genericGetter("_name")
+        return this.genericGetter("_name")
     }
 
     /**
@@ -47,7 +47,7 @@ class Class extends Entity {
      * @throws InfosNotLoadedException
      */
     get xmiID() {
-        this.genericGetter("_xmiID")
+        return this.genericGetter("_xmiID")
     }
 
     /**
@@ -56,7 +56,7 @@ class Class extends Entity {
      * @throws InfosNotLoadedException
      */
     get visibility() {
-        this.genericGetter("_visibility");
+        return this.genericGetter("_visibility");
     }
 
     /**
@@ -65,7 +65,11 @@ class Class extends Entity {
      * @throws InfosNotLoadedException
      */
     get diagramID() {
-        this.genericGetter("_diagramID");
+        return this.genericGetter("_diagramID");
+    }
+
+    get diagram() {
+        return this.genericEntityGetter(this.diagramID, Diagram);
     }
 
     /**
@@ -170,6 +174,7 @@ class Class extends Entity {
             this._visibility = Entity.convertVisibility(infos[0][dbschema.db.tableContent.class.visibility]);
             this._diagramID = infos[0][dbschema.db.tableContent.class.diagramID];
 
+            console.log(this._diagramID);
             this._infoLoaded = true;
         }
         else throw new InfosAlreadyLoadedException('class');
@@ -193,5 +198,10 @@ class Class extends Entity {
      */
     setupMethodProxy() {
         this._methodProxy = Entity.setupProxy(this._methods, Method)
+    }
+
+    async loadAllID(){
+        this.loadAttributesID();
+        this.loadMethodsID();
     }
 }

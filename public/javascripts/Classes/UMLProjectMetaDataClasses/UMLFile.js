@@ -8,7 +8,7 @@
 
 class UMLFile extends Entity {
 
-    constructor(id, loadInfos = false) {
+    constructor(id, loadInfos = autoLoadInfo) {
         super(id, loadInfos, "umlfile");
     }
 
@@ -43,6 +43,10 @@ class UMLFile extends Entity {
         return this.genericGetter("_commitID");
     }
 
+    get commit(){
+        return this.genericEntityGetter(this.commitID, Commit);
+    }
+
     /**
      * Return the repository ID of the file.
      * @returns {string}
@@ -52,6 +56,10 @@ class UMLFile extends Entity {
         return this.genericGetter("_repositoryID");
     }
 
+    get repository(){
+        return this.genericEntityGetter(this.repositoryID, Repository);
+    }
+
     /**
      * Return the XMI ID of the file. No matter if it exists or not.
      * @returns {string}
@@ -59,6 +67,10 @@ class UMLFile extends Entity {
      */
     get diagramID() {
         return this.genericGetter("_diagramID");
+    }
+
+    get diagram(){
+        return this.genericEntityGetter(this.diagramID, Diagram);
     }
 
     /**
