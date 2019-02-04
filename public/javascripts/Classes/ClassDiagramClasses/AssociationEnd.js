@@ -140,3 +140,6 @@ class AssociationEnd extends Entity{
         else throw new InfosAlreadyLoadedException('class');
     }
 }
+
+EntityClasses
+    .associationEnd = AssociationEnd;

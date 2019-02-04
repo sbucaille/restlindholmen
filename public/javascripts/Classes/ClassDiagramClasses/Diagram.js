@@ -486,4 +486,5 @@ class Diagram extends Entity {
 
 }
 
-EntityClasses.diagram = Diagram;
+EntityClasses
+    .diagram = Diagram;

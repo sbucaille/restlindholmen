@@ -92,3 +92,6 @@ class Realization extends Entity{
         else throw new InfosAlreadyLoadedException('class');
     }
 }
+
+EntityClasses
+    .realization = Realization;

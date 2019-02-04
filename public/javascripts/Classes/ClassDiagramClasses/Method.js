@@ -116,3 +116,6 @@ class Method extends Entity{
 
 
 }
+
+EntityClasses
+    .method = Method;

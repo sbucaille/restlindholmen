@@ -101,3 +101,6 @@ class Association extends Entity {
         this.loadAssociationEndsID();
     }
 }
+
+EntityClasses
+    .association = Association;

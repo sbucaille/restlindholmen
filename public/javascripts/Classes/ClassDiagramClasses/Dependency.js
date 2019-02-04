@@ -97,3 +97,6 @@ class Dependency extends Entity {
         else throw new InfosAlreadyLoadedException('class');
     }
 }
+
+EntityClasses
+    .dependency = Dependency;

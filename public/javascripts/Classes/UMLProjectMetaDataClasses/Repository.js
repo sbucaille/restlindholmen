@@ -102,3 +102,6 @@ class Repository extends Entity {
         }
     }
 }
+
+EntityClasses
+    .repository = Repository;

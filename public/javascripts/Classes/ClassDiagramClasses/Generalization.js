@@ -92,3 +92,6 @@ class Generalization extends Entity{
         else throw new InfosAlreadyLoadedException('generalization');
     }
 }
+
+EntityClasses
+    .generalization = Generalization;

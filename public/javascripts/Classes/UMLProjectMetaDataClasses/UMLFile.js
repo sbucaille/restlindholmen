@@ -110,3 +110,6 @@ class UMLFile extends Entity {
         }
     }
 }
+
+EntityClasses
+    .umlFile = UMLFile;

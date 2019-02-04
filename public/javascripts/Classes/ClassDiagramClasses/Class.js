@@ -205,3 +205,6 @@ class Class extends Entity {
         this.loadMethodsID();
     }
 }
+
+EntityClasses
+    .class = Class;

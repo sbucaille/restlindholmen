@@ -185,3 +185,6 @@ class User extends Entity {
         }
     }
 }
+
+EntityClasses
+    .user = User;

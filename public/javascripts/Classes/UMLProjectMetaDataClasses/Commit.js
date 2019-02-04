@@ -96,3 +96,6 @@ class Commit extends Entity {
         }
     }
 }
+
+EntityClasses
+    .commit = Commit;

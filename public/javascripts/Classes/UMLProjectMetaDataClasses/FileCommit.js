@@ -85,3 +85,6 @@ class FileCommit extends Entity {
         }
     }
 }
+
+EntityClasses
+    .fileCommit = FileCommit;

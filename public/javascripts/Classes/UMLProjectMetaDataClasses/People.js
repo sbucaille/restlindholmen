@@ -52,3 +52,6 @@ class People extends Entity{
         }
     }
 }
+
+EntityClasses
+    .people = People;

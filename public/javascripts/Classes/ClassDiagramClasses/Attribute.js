@@ -89,3 +89,6 @@ class Attribute extends Entity {
         else throw new InfosAlreadyLoadedException('attribute')
     }
 }
+
+EntityClasses
+    .attribute = Attribute;

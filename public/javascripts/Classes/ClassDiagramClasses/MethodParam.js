@@ -69,3 +69,6 @@ class MethodParam extends Entity{
         else throw new InfosAlreadyLoadedException('methodParam')
     }
 }
+
+EntityClasses
+    .methodParam = Diagram;
