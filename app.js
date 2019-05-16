@@ -5,6 +5,8 @@
  *
  */
 
+const https = require('https');
+const fs = require('fs');
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
@@ -13,7 +15,7 @@ let logger = require('morgan');
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
-let restApi = require('./routes/RestAPI/restApi');
+
 
 let app = express();
 
@@ -26,10 +28,21 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname, { dotfiles: 'allow' } ));
+
+// const privateKey = fs.readFileSync('/etc/letsencrypt/live/www.stevenbucaille.com/privkey.pem', 'utf8');
+// const certificate = fs.readFileSync('/etc/letsencrypt/live/www.stevenbucaille.com/cert.pem', 'utf8');
+// const ca = fs.readFileSync('/etc/letsencrypt/live/www.stevenbucaille.com/chain.pem', 'utf8');
+//
+// const credentials = {
+// 	key: privateKey,
+// 	cert: certificate,
+// 	ca: ca
+// };
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api', restApi);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -48,6 +61,11 @@ app.use(function (err, req, res, next) {
 });
 
 let port = process.env.PORT || 8080;
+
+// const httpsServer = https.createServer(credentials, app);
+// httpsServer.listen(443, () => {
+// 	console.log('HTTPS Server running on port 443');
+// });
 
 app.listen(port);
 console.log("Server launched, listening on " + port);

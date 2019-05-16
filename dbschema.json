@@ -1,25 +1,47 @@
 {
   "db": {
+    "tableListNames": [
+      "diagram",
+      "attribute",
+      "class",
+      "method",
+      "methodParam",
+      "association",
+      "associationEnd",
+      "dependency",
+      "realization",
+      "generalization",
+      "umlfile",
+      "commit",
+      "filecommit",
+      "repository",
+      "people",
+      "user",
+      "has_tag",
+      "tag"
+    ],
     "tableNames": {
       "diagram": "xmi",
       "attribute": "cd_attribute",
       "class": "cd_class",
       "method": "cd_operation",
-      "methodParam" : "cd_operparam",
-      "association" : "cd_association",
-      "associationEnd" : "cd_associationend",
-      "dependency" : "cd_dependency",
-      "realization" : "cd_realization",
-      "generalization" : "cd_generalization",
-      "umlfile" : "umlfiles",
+      "methodParam": "cd_operparam",
+      "association": "cd_association",
+      "associationEnd": "cd_associationend",
+      "dependency": "cd_dependency",
+      "realization": "cd_realization",
+      "generalization": "cd_generalization",
+      "umlfile": "umlfiles",
       "commit": "commits",
-      "filecommit" : "filecommits",
+      "filecommit": "filecommits",
       "repository": "repos",
-      "people" : "people",
-      "user" : "users"
+      "people": "people",
+      "user": "users",
+      "has_tag" : "has_tag",
+      "tag": "tag"
     },
     "tableListContent": {
-      "diagram" : [
+      "diagram": [
         "id",
         "filePath"
       ],
@@ -101,7 +123,7 @@
         "diagramID",
         "type"
       ],
-      "commit" : [
+      "commit": [
         "id",
         "githubCommitID",
         "peopleID",
@@ -109,14 +131,14 @@
         "coChanged",
         "repositoryID"
       ],
-      "filecommit" : [
+      "filecommit": [
         "id",
         "name",
         "commitID",
         "repositoryID",
         "type"
       ],
-      "repository" : [
+      "repository": [
         "id",
         "name",
         "founder",
@@ -125,12 +147,12 @@
         "dateFirstCommit",
         "dateLastCommit"
       ],
-      "people" : [
+      "people": [
         "id",
         "name",
         "mail"
       ],
-      "user" : [
+      "user": [
         "id",
         "login",
         "name",
@@ -146,18 +168,29 @@
         "countryCode",
         "state",
         "city"
+      ],
+      "has_tag" : [
+        "id",
+        "tagID",
+        "entityID",
+        "entityType"
+      ],
+      "tag": [
+        "id",
+        "name",
+        "value"
       ]
     },
     "tableContent": {
-      "diagram" :{
-        "id" : "id",
-        "filePath" : "xmi_filePath"
+      "diagram": {
+        "id": "id",
+        "filePath": "xmi_filePath"
       },
       "class": {
         "id": "id",
         "name": "cls_name",
         "xmiID": "cls_xmi_id",
-        "visibility": "visibility",
+        "visibility": "cls_visibility",
         "diagramID": "xmi_id"
       },
       "attribute": {
@@ -165,7 +198,7 @@
         "classID": "cls_id",
         "xmiID": "attr_xmi_id",
         "name": "attr_name",
-        "visibility": "visibility",
+        "visibility": "attr_visibility",
         "type": "attr_type"
       },
       "method": {
@@ -222,61 +255,1509 @@
         "childClassID": "gen_child",
         "parentClassID": "gen_parent"
       },
-      "umlfile" : {
-        "id" : "id",
-        "name" : "name",
-        "url" : "url",
-        "commitID" : "commits_id",
-        "repositoryID" : "repo_id",
-        "diagramID" : "has_xmi",
-        "type" : "uml_type"
-      },
-      "commit" : {
+      "umlfile": {
         "id": "id",
-        "githubCommitID" : "gh_id",
-        "peopleID" : "people_id",
-        "date" : "commit_date",
-        "coChanged" : "cochanged",
-        "repositoryID" : "repos_id"
+        "name": "name",
+        "url": "url",
+        "commitID": "commits_id",
+        "repositoryID": "repo_id",
+        "diagramID": "has_xmi",
+        "type": "uml_type"
       },
-      "filecommit" : {
-        "id" : "id",
-        "name" : "name",
-        "commitID" : "commit_id",
-        "repositoryID" : "repos_id",
-        "type" : "filetype"
+      "commit": {
+        "id": "id",
+        "githubCommitID": "gh_id",
+        "peopleID": "people_id",
+        "date": "commit_date",
+        "coChanged": "cochanged",
+        "repositoryID": "repos_id"
       },
-      "repository" : {
-        "id" : "id",
-        "name" : "name",
-        "founder" : "founder",
-        "url" : "url",
-        "numberOfCommits" : "number_commits",
-        "dateFirstCommit" : "first_commit",
-        "dateLastCommit" : "last_commit"
+      "filecommit": {
+        "id": "id",
+        "name": "name",
+        "commitID": "commit_id",
+        "repositoryID": "repos_id",
+        "type": "filetype"
       },
-      "people" : {
-        "id" : "id",
-        "name" : "name",
-        "email" : "email"
+      "repository": {
+        "id": "id",
+        "name": "name",
+        "founder": "founder",
+        "url": "url",
+        "numberOfCommits": "number_commits",
+        "dateFirstCommit": "first_commit",
+        "dateLastCommit": "last_commit"
+      },
+      "people": {
+        "id": "id",
+        "name": "name",
+        "email": "email"
       },
       "user": {
+        "id": "id",
+        "login": "login",
+        "name": "name",
+        "company": "company",
+        "location": "location",
+        "email": "email",
+        "createdAt": "created_at",
+        "type": "type",
+        "fake": "fake",
+        "deleted": "deleted",
+        "longitude": "longi",
+        "latitude": "lat",
+        "countryCode": "country_code",
+        "state": "state",
+        "city": "city"
+      },
+      "has_tag" : {
         "id" : "id",
-        "login" : "login",
-        "name" : "name",
-        "company" : "company",
-        "location" : "location",
-        "email" : "email",
-        "createdAt" : "created_at",
-        "type" : "type",
-        "fake" : "fake",
-        "deleted" : "deleted",
-        "longitude" : "longi",
-        "latitude" : "lat",
-        "countryCode" : "country_code",
-        "state" : "state",
-        "city" : "city"
+        "tagID" : "tagID",
+        "entityID" : "entityID",
+        "entityType" : "entityType"
+      },
+      "tag": {
+        "id": "id",
+        "name": "name",
+        "value": "value"
       }
+    },
+    "tableRelations": {
+      "diagram": {
+        "class": {
+          "direct": true,
+          "key": "id"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "class",
+          "key": "id"
+        },
+        "method": {
+          "direct": false,
+          "path": "class",
+          "key": "id"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "class",
+          "key": "id"
+        },
+        "association": {
+          "direct": true,
+          "key": "id"
+        },
+        "associationEnd": {
+          "direct": true,
+          "key": "id"
+        },
+        "dependency": {
+          "direct": true,
+          "key": "id"
+        },
+        "realization": {
+          "direct": true,
+          "key": "id"
+        },
+        "generalization": {
+          "direct": true,
+          "key": "id"
+        },
+        "umlfile": {
+          "direct": true,
+          "key": "id"
+        },
+        "commit": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "repository": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "people": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "user": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "class": {
+        "diagram": {
+          "direct": true,
+          "key": "diagramID"
+        },
+        "attribute": {
+          "direct": true,
+          "key": "id"
+        },
+        "method": {
+          "direct": true,
+          "key": "id"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "method",
+          "key": "id"
+        },
+        "association": {
+          "direct": false,
+          "path": "associationEnd",
+          "key": "id"
+        },
+        "associationEnd": {
+          "direct": true,
+          "key": "id"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "commit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "repository": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "people": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "user": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "attribute": {
+        "diagram": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "class": {
+          "direct": true,
+          "key": "classID"
+        },
+        "method": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "association": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "commit": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "repository": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "people": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "user": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "method": {
+        "diagram": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "class": {
+          "direct": true,
+          "key": "classID"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "methodParam": {
+          "direct": true,
+          "key": "id"
+        },
+        "association": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "commit": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "repository": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "people": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "user": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "methodParam": {
+        "diagram": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "class": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "method": {
+          "direct": true,
+          "key": "methodID"
+        },
+        "association": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "commit": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "repository": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "people": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "user": {
+          "direct": false,
+          "path": "method",
+          "key": "methodID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "association": {
+        "diagram": {
+          "direct": true,
+          "key": "diagramID"
+        },
+        "class": {
+          "direct": false,
+          "path": "associationEnd",
+          "key": "id"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "method": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "associationEnd": {
+          "direct": true,
+          "key": "id"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "commit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "repository": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "people": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "user": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "associationEnd": {
+        "diagram": {
+          "direct": true,
+          "key": "diagramID"
+        },
+        "class": {
+          "direct": true,
+          "key": "classID"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "method": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "class",
+          "key": "classID"
+        },
+        "association": {
+          "direct": true,
+          "key": "associationID"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "commit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "repository": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "people": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "user": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "dependency": {
+        "diagram": {
+          "direct": true,
+          "key": "diagramID"
+        },
+        "class": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "method": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "association": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "commit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "repository": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "people": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "user": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "realization": {
+        "diagram": {
+          "direct": true,
+          "key": "diagramID"
+        },
+        "class": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "method": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "association": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "commit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "repository": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "people": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "user": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "generalization": {
+        "diagram": {
+          "direct": true,
+          "key": "diagramID"
+        },
+        "class": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "method": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "association": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "commit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "repository": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "people": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "user": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "umlfile": {
+        "diagram": {
+          "direct": true,
+          "key": "diagramID"
+        },
+        "class": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "method": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "association": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "diagram",
+          "key": "diagramID"
+        },
+        "commit": {
+          "direct": true,
+          "key": "commitID"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "repository": {
+          "direct": true,
+          "key": "repositoryID"
+        },
+        "people": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "user": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "commit": {
+        "diagram": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "class": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "method": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "association": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "realization": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "umlfile",
+          "key": "id"
+        },
+        "umlfile": {
+          "direct": true,
+          "key": "id"
+        },
+        "filecommit": {
+          "direct": true,
+          "key": "id"
+        },
+        "repository": {
+          "direct": true,
+          "key": "repositoryID"
+        },
+        "people": {
+          "direct": true,
+          "key": "peopleID"
+        },
+        "user": {
+          "direct": false,
+          "path": "repository",
+          "key": "repositoryID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "filecommit": {
+        "diagram": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "class": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "method": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "association": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "commit": {
+          "direct": true,
+          "key": "commitID"
+        },
+        "repository": {
+          "direct": true,
+          "key": "repositoryID"
+        },
+        "people": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "user": {
+          "direct": false,
+          "path": "repository",
+          "key": "repositoryID"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "repository": {
+        "diagram": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "class": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "method": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "association": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "realization": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "commit": {
+          "direct": true,
+          "key": "id"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "people": {
+          "direct": false,
+          "path": "commit",
+          "key": "commitID"
+        },
+        "user": {
+          "direct": true,
+          "key": "founder"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "people": {
+        "diagram": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "class": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "method": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "association": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "realization": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "commit": {
+          "direct": true,
+          "key": "id"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "repository": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "user": {
+          "direct": false,
+          "path": "commit",
+          "key": "id"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "user": {
+        "diagram": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "class": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "method": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "association": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "realization": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "commit": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "repository": {
+          "direct": true,
+          "key": "id"
+        },
+        "people": {
+          "direct": false,
+          "path": "repository",
+          "key": "id"
+        },
+        "tag": {
+          "direct": true,
+          "key": "id"
+        }
+      },
+      "has_tag": {
+        "diagram": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "class": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "attribute": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "method": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "methodParam": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "association": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "associationEnd": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "dependency": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "realization": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "generalization": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "umlfile": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "commit": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "filecommit": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "repository":{
+          "direct": true,
+          "key": "entityID"
+        },
+        "people": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "user": {
+          "direct": true,
+          "key": "entityID"
+        },
+        "tag": {
+          "direct" : true,
+          "key" : "tagID"
+        }
+      },
+      "tag": {
+        "diagram": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "class": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "attribute": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "method": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "methodParam": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "association": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "associationEnd": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "dependency": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "realization": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "generalization": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "umlfile": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "commit": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "filecommit": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "repository": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "people": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "user": {
+          "direct": false,
+          "path": "has_tag",
+          "key": "id"
+        },
+        "has_tag": {
+          "direct" : true,
+          "key" : "id"
+        }
+      }
+    },
+    "plurals": {
+      "diagram": "diagrams",
+      "class": "classes",
+      "attribute": "attributes",
+      "method": "methods",
+      "methodParam": "methodParams",
+      "association": "associations",
+      "dependency": "dependencies",
+      "associationEnd": "associationEnds",
+      "realization": "realizations",
+      "generalization": "generalizations",
+      "umlfile": "umlfiles",
+      "commit": "commits",
+      "filecommit": "filecommits",
+      "people": "people",
+      "repository": "repositories",
+      "user": "users",
+      "tag": "tags"
     }
   }
 }

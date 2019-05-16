@@ -5,16 +5,25 @@
  *
  */
 
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+
+let restlindholmen = require('./restlindholmen/index');
+let me = require('./me/index');
+
+let rs = {};
+
+router.use('/restlindholmen', restlindholmen);
+router.use('/me', me);
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res) {
+    rs.title = 'Steven Bucaille';
+    res.render('index', rs);
 });
 
-router.get('/home', (req, res, next) => {
-	res.render('index');
-})
+router.get('/home', (req, res) => {
+    res.render('index');
+});
 
 module.exports = router;

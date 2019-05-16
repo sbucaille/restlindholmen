@@ -1,5 +1,25 @@
 extends layout
 
+block imports
+    include me/imports
 block content
-  h1= title
-  p Welcome to #{title}
+    include header
+    div.container.pt-5
+        h2.shadow-sm.p-3.mb-5.bg-white.rounded.text-center Welcome
+        div.container-fluid
+            div.row
+                div.col-lg-6
+                    p
+                        | Hi, I'm Steven Bucaille and you are on my personal website,
+                        | it is still under construction, but you can already find out my previous project
+                        a(href="/me")  there
+                        |  or maybe you are interested in the current
+                        a(href="/reslindholmen")  RestLindholmen project
+                        |  I'm working on.
+                    p
+                        | Anyway, if you are looking for more informations about me, you can still find me on
+                        a(href="https://www.linkedin.com/in/sbucaille/" target="_blank")  LinkedIn
+                        |  !
+                div.col-lg-6
+                    img.img-fluid(src="images/profile.jpg")
+
